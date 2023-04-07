@@ -10,6 +10,14 @@ public class PlayerController : MonoBehaviour
     Vector2 movementInput;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    
+    public Collider2D swordColliderUp;
+    public Collider2D swordColliderDown;
+    public Collider2D swordColliderRight;
+    public Collider2D swordColliderLeft;
+
+    bool playerAttacking;
+    List<Vector2> swordRBPositions = new List<Vector2>();
 
 
     public float movementSpeed;
@@ -23,7 +31,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-
     }
 
     private void FixedUpdate()
@@ -51,10 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", 0);
         }
-    }
-
-    private void PlayerAnimationDirection(string AnimationName, bool TrueRFalse)
-    {
 
     }
 
@@ -74,8 +77,60 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void TurnOnSwordCollidersBasedOnDirection()
+    {
+        //Not an elegant way I know! But in a rush. Trying to get the direction so I can move the weapon hitbox.
+        if (movementInput.x > 0.01)
+        {
+            swordColliderUp.enabled = false;
+            swordColliderDown.enabled = false;
+            swordColliderRight.enabled = true;
+            swordColliderLeft.enabled = false;
+            Debug.Log("Right");
+        }
+        if (movementInput.x < -0.01)
+        {
+            swordColliderUp.enabled = false;
+            swordColliderDown.enabled = false;
+            swordColliderRight.enabled = false;
+            swordColliderLeft.enabled = true;
+            Debug.Log("Left");
+        }
+        if (movementInput.y > 0.01)
+        {
+            swordColliderUp.enabled = true;
+            swordColliderDown.enabled = false;
+            swordColliderRight.enabled = false;
+            swordColliderLeft.enabled = false;
+            Debug.Log("Up");
+        }
+        if (movementInput.y < -0.01)
+        {
+            swordColliderUp.enabled = false;
+            swordColliderDown.enabled = true;
+            swordColliderRight.enabled = false;
+            swordColliderLeft.enabled = false;
+            Debug.Log("Down");
+        }
+        swordColliderUp.enabled = false;
+        swordColliderDown.enabled = false;
+        swordColliderRight.enabled = false;
+        swordColliderLeft.enabled = false;
+    }
+
+
+    //Unity input system functions.
+
+    void OnFire()
+    {
+        animator.SetTrigger("SwordAttack");
+
+    }
+
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+        TurnOnSwordCollidersBasedOnDirection();
+
     }
 }
