@@ -23,18 +23,10 @@ public class PlayerController : MonoBehaviour
    
     public directionsFaced directions;
 
-   // public Collider2D swordColliderUp;
-   // public Collider2D swordColliderDown;
-   // public Collider2D swordColliderRight;
-   // public Collider2D swordColliderLeft;
-
-
+    float collsionOffset = 0.05f;
     public float movementSpeed;
-     float collsionOffset = 0.05f;
     public ContactFilter2D movementFilter; //For raycast layers
     List<RaycastHit2D> castedCollisions = new List<RaycastHit2D>();
-    string currentDirection;
-
 
     private void Start()
     {
@@ -91,14 +83,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnBeforeTransformParentChanged()
-    {
-        
-    }
-
     void WhatDirectionIsThePlayerFacing()
     {
-        //Not an elegant way I know! But in a rush. Trying to get the direction so I can move the weapon hitbox.
         if (movementInput.x > 0.01)
         {
             directions = directionsFaced.right;
@@ -152,59 +138,6 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
-        WhatDirectionIsThePlayerFacing(); //Every frame it will enable and disable a collider depending on the direction the player is facing. - Bad for performanc I know
+        WhatDirectionIsThePlayerFacing(); //Could call this in update, but it makes sense when the player presses the key.
     }
-
-    /* void WhatDirectionIsThePlayerFacing()
-    {
-        //Not an elegant way I know! But in a rush. Trying to get the direction so I can move the weapon hitbox.
-        if (movementInput.x > 0.01)
-        {
-            directions = directionsFaced.right;
-           // swordColliderUp.enabled = false;
-           // swordColliderDown.enabled = false;
-           // swordColliderRight.enabled = true;
-           // swordColliderLeft.enabled = false;
-           // swordAttack.SwordAttackRight();
-            Debug.Log("Right");
-        }
-        if (movementInput.x < -0.01)
-        {
-            directions = directionsFaced.left;
-
-            // swordColliderUp.enabled = false;
-            // swordColliderDown.enabled = false;
-            // swordColliderRight.enabled = false;
-            // swordColliderLeft.enabled = true;
-            //swordAttack.SwordAttackLeft();
-
-            Debug.Log("Left");
-        }
-        if (movementInput.y > 0.01)
-        {
-            directions = directionsFaced.up;
-
-            // swordColliderUp.enabled = true;
-            // swordColliderDown.enabled = false;
-            // swordColliderRight.enabled = false;
-            // swordColliderLeft.enabled = false;
-            // swordAttack.SwordAttackUp();
-            Debug.Log("Up");
-        }
-        if (movementInput.y < -0.01)
-        {
-            directions = directionsFaced.down;
-
-            // swordColliderUp.enabled = false;
-            // swordColliderDown.enabled = true;
-            // swordColliderRight.enabled = false;
-            // swordColliderLeft.enabled = false;
-            // swordAttack.SwordAttackDown();
-            Debug.Log("Down");
-        }
-       // swordColliderUp.enabled = false;
-       // swordColliderDown.enabled = false;
-       // swordColliderRight.enabled = false;
-       // swordColliderLeft.enabled = false;
-    }*/
 }

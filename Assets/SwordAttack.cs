@@ -10,39 +10,32 @@ public class SwordAttack : MonoBehaviour
     public Vector2 upAttackOffset;
     public Vector2 downAttackOffset;
 
-    Vector2 originalPosition;
-
     private void Start()
     {
-        originalPosition= transform.position;
         playerController = FindObjectOfType<PlayerController>();
         swordCollider = GetComponent<Collider2D>();
     }
 
     public void SwordAttackRight()
     {
-        transform.localPosition = originalPosition;
         swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
     }
      
     public void SwordAttackLeft()
     {
-        transform.localPosition = originalPosition;
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(rightAttackOffset.x *-0.5f, rightAttackOffset.y);
     }
 
     public void SwordAttackUp()
     {
-        transform.localPosition = originalPosition;
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(upAttackOffset.x, upAttackOffset.y);
     }
 
     public void SwordAttackDown()
     {
-        transform.localPosition = originalPosition;
         swordCollider.enabled = true;
         transform.localPosition = new Vector3(downAttackOffset.x, downAttackOffset.y);
     }
