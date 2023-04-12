@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SwordAttack : MonoBehaviour
 {
     PlayerController playerController;
-    Collider2D swordCollider;
+    public Collider2D swordCollider;
     public Vector2 rightAttackOffset;
     public Vector2 upAttackOffset;
     public Vector2 downAttackOffset;
@@ -18,48 +19,37 @@ public class SwordAttack : MonoBehaviour
 
     public void SwordAttackRight()
     {
-        swordCollider.enabled = true;
         transform.localPosition = rightAttackOffset;
+        swordCollider.enabled = true;
     }
      
     public void SwordAttackLeft()
     {
-        swordCollider.enabled = true;
         transform.localPosition = new Vector3(rightAttackOffset.x *-0.5f, rightAttackOffset.y);
+      swordCollider.enabled = true;
     }
 
     public void SwordAttackUp()
     {
-        swordCollider.enabled = true;
         transform.localPosition = new Vector3(upAttackOffset.x, upAttackOffset.y);
+      swordCollider.enabled = true;
     }
 
     public void SwordAttackDown()
     {
-        swordCollider.enabled = true;
         transform.localPosition = new Vector3(downAttackOffset.x, downAttackOffset.y);
-    }
-
-
-    public void StopAttack()
-    {
-        swordCollider.enabled = false;
-
+        swordCollider.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Enemy")
         {
+            Debug.Log("slime found");
             Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.health -= playerController.swordDamage;
-                if (enemy.health <= 0)
-                {
-                    enemy.Death();
-                }
-
             }
         }
     }

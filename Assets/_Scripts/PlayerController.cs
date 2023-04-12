@@ -37,6 +37,18 @@ public class PlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    public void StartSwordAttack()
+    {
+        //animator.SetTrigger("SwordAttack");
+        swordAttack.swordCollider.enabled = true;
+    }
+
+    public void EndSwordAttack()
+    {
+        animator.SetTrigger("SwordAttackDone");
+        swordAttack.swordCollider.enabled = false;
+    }
+
     private void FixedUpdate()
     {
         if (movementInput != Vector2.zero) //If there is no player input
