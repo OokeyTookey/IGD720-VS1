@@ -6,30 +6,10 @@ public class Enemy : MonoBehaviour
 {
     public float health;
 
-    public float Health
-    {
-        set
-        {
-            health = value;
-
-            if (health <= 0)
-            {
-                Death();
-            }
-        }
-        get
-        {
-            return health;
-        }
-    }
-
-    public void TakeDamage(float damage)
-    {
-        Health -= damage;
-    }
-
     public void Death()
     {
+        Animator animations = this.GetComponent<Animator>();
+        animations.SetTrigger("EnemyDie");
         Debug.Log("Enemy died");
     }
 

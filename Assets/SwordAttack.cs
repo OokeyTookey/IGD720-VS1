@@ -51,10 +51,15 @@ public class SwordAttack : MonoBehaviour
     {
         if (collision.tag == "Enemy")
         {
-            Enemy enemy= collision.GetComponent<Enemy>();
+            Enemy enemy = collision.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.health -= playerController.swordDamage;
+                if (enemy.health <= 0)
+                {
+                    enemy.Death();
+                }
+
             }
         }
     }
