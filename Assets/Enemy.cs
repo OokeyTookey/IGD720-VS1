@@ -17,11 +17,11 @@ public class Enemy : MonoBehaviour
 
     public void ReduceHp(int value)
     {
+        Animator animations = this.GetComponent<Animator>();
         health -= value;
-        print(value);
+        animations.SetTrigger("EnemyHit");
         if (health <= 0)
         {
-            Animator animations = this.GetComponent<Animator>();
             animations.SetTrigger("EnemyDie");
         }
     }

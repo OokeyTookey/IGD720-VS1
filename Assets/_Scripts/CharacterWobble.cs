@@ -25,7 +25,7 @@ public class CharacterWobble : MonoBehaviour
 
     List<WiggleStartAndEnd> wiggleStartAndEnds = new List<WiggleStartAndEnd>();
     int count = 0;
-    float refreshSpeed = 0.5f;
+    //float refreshSpeed = 0.5f;
 
     string text;
     int indexInText = 0;

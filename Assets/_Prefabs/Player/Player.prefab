@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
+  m_Offset: {x: 0, y: -0.08}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.27806598, y: 0.31278926}
+  m_Size: {x: 0.22, y: 0.15}
   m_EdgeRadius: 0
 --- !u!114 &4080838063672850480
 MonoBehaviour:
@@ -91,9 +91,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordCollider: {fileID: 2019837773579419044}
-  rightAttackOffset: {x: 0.14, y: -0.08}
-  upAttackOffset: {x: 0.04, y: -0.002}
-  downAttackOffset: {x: 0.04, y: -0.095}
   playerAnim: {fileID: 7030895010012664434}
   currentEnemyHit: {fileID: 0}
   enableAttack: 0
@@ -223,7 +220,6 @@ MonoBehaviour:
   swordDamage: 1
   swordAttack: {fileID: 4080838063672850480}
   swordColliderOffset: 7.5
-  directions: 0
   movementSpeed: 1
   attackFilter:
     useTriggers: 0

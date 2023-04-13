@@ -17,15 +17,15 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     SpriteRenderer spriteRenderer;
 
-    public enum directionsFaced
+    /*public enum directionsFaced
     {
         up,
         down,
         left,
         right
-    }
+    }*/
 
-    public directionsFaced directions;
+    //public directionsFaced directions;
 
     float collsionOffset = 0.05f;
     public float movementSpeed;
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        directions = directionsFaced.down;
+       // directions = directionsFaced.down;
 
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -78,9 +78,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetFloat("Speed", 0);
         }
-
         //Debug.Log("The player's current directions is: " + directions);
-
     }
 
     private bool AttemptMovement(Vector2 direction) //The script will first check if the player can make a viable move before actually moving
@@ -99,7 +97,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void WhatDirectionIsThePlayerFacing()
+    /*void WhatDirectionIsThePlayerFacing()
     {
         if (movementInput.x > 0.01)
         {
@@ -121,7 +119,7 @@ public class PlayerController : MonoBehaviour
             directions = directionsFaced.down;
             // Debug.Log("Down");
         }
-    }
+    }*/
 
     //------------------------------------------------Unity input system functions.
 
@@ -130,7 +128,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("SwordAttack");
         //TurnOnSwordCollidersBasedOnDirection();
 
-        switch (directions)
+       /* switch (directions)
         {
             case directionsFaced.up:
                 //swordAttack.SwordAttackUp();
@@ -148,7 +146,7 @@ public class PlayerController : MonoBehaviour
                 //swordAttack.SwordAttackRight();
                 //Debug.Log("switchcase right");
                 return;
-        }
+        }*/
     }
 
     void OnMove(InputValue movementValue)
@@ -158,6 +156,6 @@ public class PlayerController : MonoBehaviour
         if (movementInput != Vector2.zero)
             currentDirectionFacing = movementInput;
 
-        WhatDirectionIsThePlayerFacing(); //Could call this in update, but it makes sense when the player presses the key.
+        //WhatDirectionIsThePlayerFacing(); //Could call this in update, but it makes sense when the player presses the key.
     }
 }
