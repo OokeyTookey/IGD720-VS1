@@ -8,24 +8,29 @@ public class PlayerController : MonoBehaviour
 {
     public int swordDamage;
     public SwordAttack swordAttack;
-    
+
+    [SerializeField] float swordColliderOffset;
+
     Rigidbody2D rb;
     Vector2 movementInput;
+    Vector2 currentDirectionFacing;
     Animator animator;
     SpriteRenderer spriteRenderer;
-    
-    public enum directionsFaced{
-        up, 
-        down,   
-        left, 
+
+    public enum directionsFaced
+    {
+        up,
+        down,
+        left,
         right
     }
-   
+
     public directionsFaced directions;
 
     float collsionOffset = 0.05f;
     public float movementSpeed;
-    public ContactFilter2D movementFilter; //For raycast layers
+    [SerializeField] ContactFilter2D attackFilter; //For raycast layers
+    [SerializeField] ContactFilter2D movementFilter; //For raycast layers
     List<RaycastHit2D> castedCollisions = new List<RaycastHit2D>();
 
     private void Start()
@@ -39,14 +44,13 @@ public class PlayerController : MonoBehaviour
 
     public void StartSwordAttack()
     {
-        //animator.SetTrigger("SwordAttack");
-        swordAttack.swordCollider.enabled = true;
+        swordAttack.UpdateBoxColliderPosition(currentDirectionFacing / swordColliderOffset);
+        swordAttack.enableAttack = true;
     }
 
     public void EndSwordAttack()
     {
-        animator.SetTrigger("SwordAttackDone");
-        swordAttack.swordCollider.enabled = false;
+        swordAttack.enableAttack = false;
     }
 
     private void FixedUpdate()
@@ -75,8 +79,8 @@ public class PlayerController : MonoBehaviour
             animator.SetFloat("Speed", 0);
         }
 
-        Debug.Log("The player's current directions is: " + directions);
-            
+        //Debug.Log("The player's current directions is: " + directions);
+
     }
 
     private bool AttemptMovement(Vector2 direction) //The script will first check if the player can make a viable move before actually moving
@@ -105,17 +109,17 @@ public class PlayerController : MonoBehaviour
         if (movementInput.x < -0.01)
         {
             directions = directionsFaced.left;
-           // Debug.Log("Left");
+            // Debug.Log("Left");
         }
         if (movementInput.y > 0.01)
         {
             directions = directionsFaced.up;
-           // Debug.Log("Up");
+            // Debug.Log("Up");
         }
         if (movementInput.y < -0.01)
         {
             directions = directionsFaced.down;
-           // Debug.Log("Down");
+            // Debug.Log("Down");
         }
     }
 
@@ -129,20 +133,20 @@ public class PlayerController : MonoBehaviour
         switch (directions)
         {
             case directionsFaced.up:
-                swordAttack.SwordAttackUp();
-                Debug.Log("switchcase up");
+                //swordAttack.SwordAttackUp();
+                //Debug.Log("switchcase up");
                 return;
             case directionsFaced.down:
-                swordAttack.SwordAttackDown();
-                Debug.Log("switchcase down");
+                //swordAttack.SwordAttackDown();
+                //Debug.Log("switchcase down");
                 return;
             case directionsFaced.left:
-                swordAttack.SwordAttackLeft();
-                Debug.Log("switchcase left");
+                // swordAttack.SwordAttackLeft();
+                //Debug.Log("switchcase left");
                 return;
             case directionsFaced.right:
-                swordAttack.SwordAttackRight();
-                Debug.Log("switchcase right");
+                //swordAttack.SwordAttackRight();
+                //Debug.Log("switchcase right");
                 return;
         }
     }
@@ -150,6 +154,10 @@ public class PlayerController : MonoBehaviour
     void OnMove(InputValue movementValue)
     {
         movementInput = movementValue.Get<Vector2>();
+
+        if (movementInput != Vector2.zero)
+            currentDirectionFacing = movementInput;
+
         WhatDirectionIsThePlayerFacing(); //Could call this in update, but it makes sense when the player presses the key.
     }
 }

@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float health;
+    [SerializeField] int health;
 
-    private void FixedUpdate()
+    /*private void FixedUpdate()
     {
         if (health <= 0)
         {
             Debug.Log("LoOSING HALTH");
             Death();
         }
-    }
-    
+    }*/
 
-    public void Death()
+    public void ReduceHp(int value)
     {
-        Animator animations = this.GetComponent<Animator>();
-        animations.SetTrigger("EnemyDie");
-        Debug.Log("Enemy died");
+        health -= value;
+        print(value);
+        if (health <= 0)
+        {
+            Animator animations = this.GetComponent<Animator>();
+            animations.SetTrigger("EnemyDie");
+        }
     }
-
 }
