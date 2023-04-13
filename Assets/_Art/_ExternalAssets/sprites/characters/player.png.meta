@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -107,6 +109,18 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1198,60 +1212,59 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      player_50: 1108455762
-      player_15: 1034448579
-      player_12: -1979447320
-      player_19: 763430075
-      player_26: 506497971
-      player_41: 81206714
-      player_25: -1563775001
-      player_37: 105747163
-      player_23: 851177713
-      player_31: 518567478
       player_0: -133195902
-      player_24: 153977006
-      player_36: 420186256
-      player_40: 1005489035
-      player_3: -1933955486
-      player_6: -493091994
-      player_2: -612887322
-      player_29: -1245998583
-      player_47: 82781010
-      player_34: -1289848763
-      player_17: 829953184
-      player_13: -948320540
-      player_44: -1478629033
-      player_28: -1956997649
-      player_11: 1398119803
-      player_27: -1451657842
       player_1: 503125823
-      player_16: -2030600294
-      player_8: 1716113408
-      player_14: -375759141
-      player_21: 1617787523
-      player_35: -382678394
-      player_4: -696646475
-      player_5: 1469786066
-      player_46: -1040063075
-      player_38: -307501772
-      player_33: 1871723937
-      player_45: 1368984402
-      player_9: -396082031
-      player_30: 1881338919
-      player_39: -144909085
-      player_18: -833715441
-      player_48: 889112167
       player_10: -549392452
-      player_22: 1516727861
-      player_49: 322149480
+      player_11: 1398119803
+      player_12: -1979447320
+      player_13: -948320540
+      player_14: -375759141
+      player_15: 1034448579
+      player_16: -2030600294
+      player_17: 829953184
+      player_18: -833715441
+      player_19: 763430075
+      player_2: -612887322
       player_20: 149565036
-      player_43: 507571126
+      player_21: 1617787523
+      player_22: 1516727861
+      player_23: 851177713
+      player_24: 153977006
+      player_25: -1563775001
+      player_26: 506497971
+      player_27: -1451657842
+      player_28: -1956997649
+      player_29: -1245998583
+      player_3: -1933955486
+      player_30: 1881338919
+      player_31: 518567478
       player_32: 358540869
+      player_33: 1871723937
+      player_34: -1289848763
+      player_35: -382678394
+      player_36: 420186256
+      player_37: 105747163
+      player_38: -307501772
+      player_39: -144909085
+      player_4: -696646475
+      player_40: 1005489035
+      player_41: 81206714
       player_42: 1987751986
+      player_43: 507571126
+      player_44: -1478629033
+      player_45: 1368984402
+      player_46: -1040063075
+      player_47: 82781010
+      player_48: 889112167
+      player_49: 322149480
+      player_5: 1469786066
+      player_50: 1108455762
+      player_6: -493091994
       player_7: -1301389675
-  spritePackingTag: 
+      player_8: 1716113408
+      player_9: -396082031
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

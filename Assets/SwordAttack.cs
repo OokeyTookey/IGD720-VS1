@@ -27,7 +27,7 @@ public class SwordAttack : MonoBehaviour
         transform.localPosition = newPosition;
     }
 
-     void OnTriggerStay2D(Collider2D other)
+     void OnTriggerStay2D(Collider2D other) // collision issues need to solve. Change this to on collision enter?
      {
          if (other.tag == "Enemy")
          {
@@ -44,4 +44,6 @@ public class SwordAttack : MonoBehaviour
              }
          }
      }
+
+ 
 }

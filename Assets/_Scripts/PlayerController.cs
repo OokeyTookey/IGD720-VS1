@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("The player's current directions is: " + directions);
     }
 
-    private bool AttemptMovement(Vector2 direction) //The script will first check if the player can make a viable move before actually moving
+    public bool AttemptMovement(Vector2 direction) //The script will first check if the player can make a viable move before actually moving
     {
         //theRay creates a new ray from the player can checks if the move is valid, aka, if the player collide with anything
         //theRay will return a value, if the value is 0, AKA, No collsions, it will move the player.
