@@ -7,9 +7,6 @@ public class SwordAttack : MonoBehaviour
     PlayerController playerController;
     public Collider2D swordCollider;
     public Animator playerAnim;
-    //  public Vector2 rightAttackOffset;
-    //  public Vector2 upAttackOffset;
-    //  public Vector2 downAttackOffset;
 
     public Enemy currentEnemyHit;
     public Rigidbody2D currentEnemyRB;

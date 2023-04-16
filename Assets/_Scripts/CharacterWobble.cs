@@ -31,8 +31,9 @@ public class CharacterWobble : MonoBehaviour
     int indexInText = 0;
     float timer = 0;
 
-    [SerializeField] float typeWriterEffectSpeed;
+    [SerializeField] float typeWriterEffectSpeed = 0.1f;
     [SerializeField] bool autoStart;
+
 
     void Start()
     {
