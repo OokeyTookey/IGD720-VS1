@@ -6,21 +6,21 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //Swooooord
     public int swordDamage;
     public SwordAttack swordAttack;
-
     [SerializeField] float swordColliderOffset;
+    Vector2 currentDirectionFacing;
+
+    //Player movement
+    Vector2 movementInput;
+    private Vector2 dampMovement;
+    private Vector2 dampMovementVelocity;
+    public float turnSpeed;
+    public float movementSpeed;
 
     Rigidbody2D rb;
-    Vector2 movementInput;
-    Vector2 currentDirectionFacing;
     Animator animator;
-
-    float collsionOffset = 0.05f;
-    public float movementSpeed;
-    [SerializeField] ContactFilter2D attackFilter; //For raycast layers
-    [SerializeField] ContactFilter2D movementFilter; //For raycast layers
-    List<RaycastHit2D> castedCollisions = new List<RaycastHit2D>();
 
     private void Start()
     {
@@ -30,7 +30,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = movementInput * movementSpeed;
+        dampMovement = Vector2.SmoothDamp(
+            dampMovement,
+            movementInput,
+            ref dampMovementVelocity,
+            turnSpeed);
+
+        rb.velocity = dampMovement * movementSpeed;
 
         if (movementInput != Vector2.zero) //If there is player input, this means the animation returns to the idle position.
         {

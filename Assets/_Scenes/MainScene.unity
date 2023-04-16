@@ -269,7 +269,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 1
+  orthographic size: 0.9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4226,12 +4226,24 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1434951236698126770, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: dampSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434951236698126770, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: movementSpeed
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2488518443312542322, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488518443312542322, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2488518443312542322, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2488518443312542322, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: m_Constraints
@@ -4241,9 +4253,13 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2488518443312542322, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4080838063672850480, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: knockbackForce
-      value: 100
+      value: 999999
       objectReference: {fileID: 0}
     - target: {fileID: 7030895010012664332, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: m_RootOrder
@@ -4381,6 +4397,30 @@ PrefabInstance:
     - target: {fileID: 2001366196077077628, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: health
+      value: 999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: dampSpeed
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: movementSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: dizzyTimerWait
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: knockbackForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: enemyDetectionRange
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4858440792718897149, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
       propertyPath: m_SortingOrder
