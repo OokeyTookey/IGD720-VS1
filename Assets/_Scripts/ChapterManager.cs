@@ -5,43 +5,54 @@ using UnityEngine.UIElements;
 
 public class ChapterManager : MonoBehaviour
 {
-    public PageSweeper[] chapters;
-    public PageSweeper[] allPages;
-    public CharacterWobble charWobble;
+    public GameObject[] chapterMaster;
+    PageSweeper[] chapters;
+
+    //public CharacterWobble charWobble;
     int currentChapter;
     
     void Start()
     {
-        currentChapter= 0;
-        //allPages = FindObjectsOfType<PageSweeper>();
-        //ClearAllChapters();
-    }
+        currentChapter= 1;
+        chapters = new PageSweeper[chapterMaster.Length];
 
-    public void ClearAllChapters()
-    {
-        for (int i = 0; i < allPages.Length; i++)
+        for (int i = 0; i < chapterMaster.Length; i++)
         {
-            allPages[i].PageSweeperClear();
-        }  
+            chapters[i] = chapterMaster[i].GetComponent<PageSweeper>();
+            chapterMaster[i].SetActive(false);
+        }
+       NewChapter(); //Starts the game by looking for the 2nd chapter.
     }
 
+    /*public void NewChapter()
+    {
+        if (currentChapter > -1 && currentChapter <= chapterMaster.Length)
+        {
+            chapterMaster[currentChapter].SetActive(true); //dont touch it works
+            //chapterMaster[currentChapter-1].SetActive(true);
+
+            chapters[currentChapter].PageSweeperRestore();
+            //chapters[currentChapter].PageSweeperClear();
+           // chapterMaster[currentChapter - 1].SetActive(false);
+            currentChapter++;
+
+        }
+    } */
+    
     public void NewChapter()
     {
-        currentChapter++;
-        chapters[currentChapter].gameObject.SetActive(true); //Potentially set them as deactive.
-        chapters[currentChapter - 1].PageSweeperClear();
-        chapters[currentChapter - 1].gameObject.SetActive(false); //Potentially set them as deactive.
-      //  charWobble.SetText(chapters[currentChapter - 1].childDialogues[currentChapter - 1].text);
+        if (currentChapter > -1 && currentChapter <= chapterMaster.Length)
+        {
+            chapterMaster[currentChapter - 1].SetActive(false); //dont touch it works
+            chapterMaster[currentChapter].SetActive(true); //dont touch it works
+            chapters[currentChapter].PageSweeperFadeIn(); //dont touch it works
+            currentChapter++;
+        }
     }
 
     public void PreviousChapter()
     {
-        chapters[currentChapter].gameObject.SetActive(false); //Potentially set them as deactive.
-
         currentChapter--;
-        chapters[currentChapter].gameObject.SetActive(true); //Potentially set them as deactive.
-        chapters[currentChapter].PageSweeperRestore();
+        chapters[currentChapter].PageSweeperFadeIn();
     }
-
-   
 }

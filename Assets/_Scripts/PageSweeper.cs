@@ -48,7 +48,7 @@ public class PageSweeper : MonoBehaviour
         }
     }
 
-    public void PageSweeperRestore()
+    public void PageSweeperFadeIn()
     {
         for (int i = 0; i < childDialogues.Length; i++)
         {
