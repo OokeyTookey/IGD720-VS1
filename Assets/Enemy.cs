@@ -16,16 +16,21 @@ public class Enemy : MonoBehaviour
     private Vector2 dampMovementVelocity;
     public float turnSpeed;
 
-    PlayerController player;
     Rigidbody2D rb;
 
     float dizzyTimer;
     public float dizzyTimerWait;
 
     bool enemyHit;
-    public float knockbackForce;
-
     private float changeDirectionCooldown;
+    public int health;
+
+    PlayerController player;
+    Rigidbody2D playerRB;
+
+    SpriteRenderer enemyImage;
+
+    bool enemyDead;
 
     private void Awake()
     {
@@ -36,6 +41,8 @@ public class Enemy : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
         rb = this.GetComponent<Rigidbody2D>();
+        playerRB = player.GetComponent<Rigidbody2D>();
+        enemyImage = this.GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -65,16 +72,18 @@ public class Enemy : MonoBehaviour
 
         if (dizzyTimer >= dizzyTimerWait)
         {
-        UpdateTargetDirection();
-        SetEnemyVelocity();
+            if (!enemyDead)
+            {
+                UpdateTargetDirection();
+                SetEnemyVelocity();
+            }
         }
     }
 
     void UpdateTargetDirection()
-    {
+    { 
         RandomTargetDirection();
         PlayerTargeting();
-
     }
 
     void PlayerTargeting()
@@ -100,8 +109,11 @@ public class Enemy : MonoBehaviour
 
     void SetEnemyVelocity()
     {
-        dampMovement = Vector2.SmoothDamp(dampMovement, targetDirection, ref dampMovementVelocity, turnSpeed);
-        rb.velocity = dampMovement * movementSpeed;
+        if (!enemyDead)
+        {
+            dampMovement = Vector2.SmoothDamp(dampMovement, targetDirection, ref dampMovementVelocity, turnSpeed);
+            rb.velocity = dampMovement * movementSpeed;
+        }   
     }
 
     void OnDrawGizmosSelected()
@@ -110,28 +122,41 @@ public class Enemy : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
     }
 
-
-    [SerializeField] int health;
-
     public void ReduceHp(int value)
     {
         Animator animations = this.GetComponent<Animator>();
         health -= value;
         animations.SetTrigger("EnemyHit");
 
-        EnemyKnockback();
-
         if (health <= 0)
         {
             animations.SetTrigger("EnemyDie");
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0;
+            enemyDead = true;
+            StartCoroutine(FadeOut(8f, enemyImage));
         }
     }
 
-    void EnemyKnockback()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("knockback");
-        enemyHit = true;
-        Vector2 direction = (transform.position - player.transform.position).normalized;
-        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        if (collision.rigidbody.tag == "Player")
+        {
+            player.playerHealth--;
+            if (player.playerHealth <= 0)
+            {
+                player.PlayerDeath();
+            }
+        }
+    }
+
+    public IEnumerator FadeOut(float time, SpriteRenderer image)
+    {
+        image.color = new Color(image.color.r, image.color.g, image.color.b, 1);
+        while (image.color.a > 0.0f)
+        {
+            image.color = new Color(image.color.r, image.color.g, image.color.b, image.color.a - (Time.deltaTime / time));
+            yield return null;
+        }
     }
 }

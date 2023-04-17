@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -107,6 +109,18 @@ TextureImporter:
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1513,75 +1527,74 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      plains_35: 203831406
-      plains_52: -551077411
-      plains_22: 2087072268
-      plains_40: 67293504
-      plains_21: -1250515175
-      plains_15: 296894081
-      plains_61: 1867513726
-      plains_3: 2094475140
-      plains_24: 866065490
-      plains_44: -157196353
-      plains_56: -920562079
+      plains_0: 1424922076
       plains_1: -105961052
-      plains_34: 416051259
-      plains_33: -447729277
-      plains_19: 1999807492
+      plains_10: 55573153
+      plains_11: 797434729
+      plains_12: -195842831
+      plains_13: -2016813549
+      plains_14: -1476868392
+      plains_15: 296894081
+      plains_16: 388526957
+      plains_17: 1192906709
       plains_18: -2038706444
+      plains_19: 1999807492
+      plains_2: -1257838996
+      plains_20: -215920364
+      plains_21: -1250515175
+      plains_22: 2087072268
+      plains_23: 1430991988
+      plains_24: 866065490
+      plains_25: 935438346
+      plains_26: 1163941706
+      plains_27: -759283966
+      plains_28: 200414357
+      plains_29: -67630110
+      plains_3: 2094475140
+      plains_30: 1824267589
+      plains_31: 784052827
+      plains_32: -1134997107
+      plains_33: -447729277
+      plains_34: 416051259
+      plains_35: 203831406
+      plains_36: -1825223656
+      plains_37: -967883721
+      plains_38: -1341692470
+      plains_39: 985664557
+      plains_4: -859551738
+      plains_40: 67293504
+      plains_41: 1105823907
+      plains_42: -519931670
+      plains_43: -1884820287
+      plains_44: -157196353
+      plains_45: 805997523
+      plains_46: 495624237
+      plains_47: -78342704
+      plains_48: 583600324
+      plains_49: -594127283
+      plains_5: -2143651259
+      plains_50: -1298958659
+      plains_51: 1111066700
+      plains_52: -551077411
+      plains_53: -1153781618
+      plains_54: 175203036
+      plains_55: -648043364
+      plains_56: -920562079
       plains_57: 466514675
       plains_58: 1140815019
-      plains_0: 1424922076
-      plains_53: -1153781618
-      plains_48: 583600324
-      plains_45: 805997523
-      plains_8: 1391550055
-      plains_11: 797434729
-      plains_60: 544092090
-      plains_16: 388526957
-      plains_32: -1134997107
-      plains_63: 1888207636
-      plains_14: -1476868392
-      plains_49: -594127283
-      plains_25: 935438346
-      plains_30: 1824267589
-      plains_12: -195842831
-      plains_4: -859551738
-      plains_38: -1341692470
-      plains_55: -648043364
-      plains_27: -759283966
-      plains_6: 1672420921
       plains_59: 1642771006
-      plains_9: 797449029
-      plains_42: -519931670
-      plains_28: 200414357
-      plains_10: 55573153
-      plains_20: -215920364
-      plains_65: 1216662270
-      plains_5: -2143651259
-      plains_7: -580330152
-      plains_23: 1430991988
-      plains_43: -1884820287
-      plains_39: 985664557
-      plains_47: -78342704
-      plains_51: 1111066700
+      plains_6: 1672420921
+      plains_60: 544092090
+      plains_61: 1867513726
       plains_62: 1993483290
-      plains_54: 175203036
-      plains_46: 495624237
-      plains_29: -67630110
+      plains_63: 1888207636
       plains_64: 827593609
-      plains_17: 1192906709
-      plains_13: -2016813549
-      plains_31: 784052827
-      plains_37: -967883721
-      plains_2: -1257838996
-      plains_26: 1163941706
-      plains_36: -1825223656
-      plains_41: 1105823907
-      plains_50: -1298958659
-  spritePackingTag: 
+      plains_65: 1216662270
+      plains_7: -580330152
+      plains_8: 1391550055
+      plains_9: 797449029
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

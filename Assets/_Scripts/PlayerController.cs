@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed;
     public float movementSpeed;
 
+    public float playerHealth;
+    bool playerDead;
+
     Rigidbody2D rb;
     Animator animator;
 
@@ -29,24 +32,27 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        dampMovement = Vector2.SmoothDamp(
-            dampMovement,
-            movementInput,
-            ref dampMovementVelocity,
-            turnSpeed);
-
-        rb.velocity = dampMovement * movementSpeed;
-
-        if (movementInput != Vector2.zero) //If there is player input, this means the animation returns to the idle position.
+        if (!playerDead)
         {
-            animator.SetFloat("Horizontal", movementInput.x);
-            animator.SetFloat("Vertical", movementInput.y);
-            animator.SetFloat("Speed", movementInput.sqrMagnitude); //Checking the length of the movement value, is it above 0.01?
-        }
+            dampMovement = Vector2.SmoothDamp(
+                dampMovement,
+                movementInput,
+                ref dampMovementVelocity,
+                turnSpeed);
 
-        if (movementInput == Vector2.zero)
-        {
-            animator.SetFloat("Speed", 0);
+            rb.velocity = dampMovement * movementSpeed;
+
+            if (movementInput != Vector2.zero) //If there is player input, this means the animation returns to the idle position.
+            {
+                animator.SetFloat("Horizontal", movementInput.x);
+                animator.SetFloat("Vertical", movementInput.y);
+                animator.SetFloat("Speed", movementInput.sqrMagnitude); //Checking the length of the movement value, is it above 0.01?
+            }
+
+            if (movementInput == Vector2.zero)
+            {
+                animator.SetFloat("Speed", 0);
+            }
         }
     }
 
@@ -62,6 +68,13 @@ public class PlayerController : MonoBehaviour
     public void EndSwordAttack()
     {
         swordAttack.enableAttack = false;
+    }
+
+    public void PlayerDeath()
+    {
+        playerDead = true;
+        animator.SetTrigger("PlayerDeath");
+
     }
 
     //------------------------------------------------Unity input system functions.

@@ -24,37 +24,30 @@ public class SwordAttack : MonoBehaviour
         transform.localPosition = newPosition;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D other) // collision issues need to solve. Change this to on collision enter?
     {
-        if (collision.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
-            if (enableAttack) {
-            
-            currentEnemyHit = collision.gameObject.GetComponent<Enemy>();
+            if (enableAttack)
+            {
+                currentEnemyHit = other.gameObject.GetComponent<Enemy>();
+                currentEnemyRB = other.gameObject.GetComponent<Rigidbody2D>();
 
-            currentEnemyHit.ReduceHp(playerController.swordDamage);
-                enableAttack = false;
+                if (currentEnemyHit.health > 0)
+                {
+                    currentEnemyHit.ReduceHp(playerController.swordDamage);
+
+                    Vector2 direction = (currentEnemyHit.transform.position - playerController.transform.position);
+                    currentEnemyRB.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+                    enableAttack = false;
+                }
+                else
+                {
+                    currentEnemyRB.velocity= Vector2.zero;
+                }
             }
         }
-
-        /* void OnTriggerStay2D(Collider2D other) // collision issues need to solve. Change this to on collision enter?
-         {
-             if (other.tag == "Enemy")
-             {
-                 if (enableAttack)
-                 {
-                     currentEnemyHit = other.gameObject.GetComponent<Enemy>();
-                     currentEnemyRB = other.gameObject.GetComponent<Rigidbody2D>();
-
-                     currentEnemyHit.ReduceHp(playerController.swordDamage);
-
-                     Vector2 direction = (currentEnemyHit.transform.position - playerController.transform.position);
-                     currentEnemyRB.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-                     enableAttack = false;
-                 }
-             }
-         }*/
-
-
     }
+
+
 }
