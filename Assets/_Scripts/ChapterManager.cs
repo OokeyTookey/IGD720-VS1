@@ -10,10 +10,10 @@ public class ChapterManager : MonoBehaviour
 
     //public CharacterWobble charWobble;
     int currentChapter;
-    
+
     void Start()
     {
-        currentChapter= 1;
+        currentChapter = 1;
         chapters = new PageSweeper[chapterMaster.Length];
 
         for (int i = 0; i < chapterMaster.Length; i++)
@@ -21,7 +21,7 @@ public class ChapterManager : MonoBehaviour
             chapters[i] = chapterMaster[i].GetComponent<PageSweeper>();
             chapterMaster[i].SetActive(false);
         }
-       NewChapter(); //Starts the game by looking for the 2nd chapter.
+        NewChapter(); //Starts the game by looking for the 2nd chapter.
     }
 
     /*public void NewChapter()
@@ -38,7 +38,7 @@ public class ChapterManager : MonoBehaviour
 
         }
     } */
-    
+
     public void NewChapter()
     {
         if (currentChapter > -1 && currentChapter <= chapterMaster.Length)
@@ -52,7 +52,13 @@ public class ChapterManager : MonoBehaviour
 
     public void PreviousChapter()
     {
-        currentChapter--;
-        chapters[currentChapter].PageSweeperFadeIn();
+        if (currentChapter > -1 && currentChapter <= chapterMaster.Length)
+        {
+            chapterMaster[currentChapter].SetActive(false); //dont touch it works
+            chapterMaster[currentChapter-1].SetActive(true); //dont touch it works
+            chapters[currentChapter].PageSweeperFadeIn(); //dont touch it works
+            currentChapter--;
+
+        }
     }
 }

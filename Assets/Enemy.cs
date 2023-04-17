@@ -25,6 +25,13 @@ public class Enemy : MonoBehaviour
     bool enemyHit;
     public float knockbackForce;
 
+    private float changeDirectionCooldown;
+
+    private void Awake()
+    {
+        targetDirection = transform.up;
+    }
+
     private void Start()
     {
         player = FindObjectOfType<PlayerController>();
@@ -65,28 +72,36 @@ public class Enemy : MonoBehaviour
 
     void UpdateTargetDirection()
     {
+        RandomTargetDirection();
+        PlayerTargeting();
+
+    }
+
+    void PlayerTargeting()
+    {
         if (awareOfPlayer)
         {
-            Debug.Log("AAA");
             targetDirection = directionToPlayer;
         }
-        else
+    }
+
+    void RandomTargetDirection()
+    {
+        changeDirectionCooldown -= Time.deltaTime;
+        if (changeDirectionCooldown <=0)
         {
-            targetDirection = Vector2.zero;
+            float angleChange = Random.Range(-90f, 90f);
+            Quaternion rotation = Quaternion.AngleAxis(angleChange, transform.forward);
+            
+            targetDirection =  rotation * targetDirection;
+            changeDirectionCooldown = Random.Range(1f, 5f);
         }
     }
 
     void SetEnemyVelocity()
     {
-        if (targetDirection == Vector2.zero)
-        {
-            rb.velocity = Vector2.zero;
-        }
-        else
-        {
-            dampMovement = Vector2.SmoothDamp(dampMovement,targetDirection, ref dampMovementVelocity,turnSpeed);
-            rb.velocity = dampMovement * movementSpeed;
-        }          
+        dampMovement = Vector2.SmoothDamp(dampMovement, targetDirection, ref dampMovementVelocity, turnSpeed);
+        rb.velocity = dampMovement * movementSpeed;
     }
 
     void OnDrawGizmosSelected()
