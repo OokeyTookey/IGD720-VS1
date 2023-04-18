@@ -9,8 +9,8 @@ public class StoryPage : MonoBehaviour
     public TextMeshProUGUI textBox;
     public bool autoStart = false;
 
-    private void Start()
+    private void Awake()  //Has to be awake because dialogue controller stuff happens in start and there gets null errors.
     {
-        textBox = this.GetComponent<TextMeshProUGUI>();  
+        textBox = this.GetComponent<TextMeshProUGUI>(); 
     }
 }

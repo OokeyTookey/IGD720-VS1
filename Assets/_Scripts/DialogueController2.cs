@@ -15,10 +15,9 @@ public class DialogueController2 : MonoBehaviour
 
     private void Start()
     {
-       currentPageNumber= 0; 
-        
-        chapters= GetComponentsInChildren<StoryPage>();
-
+        currentPageNumber = 0;
+        chapters = GetComponentsInChildren<StoryPage>();
+        Debug.Log(chapters[currentPageNumber].textBox);
         StartCoroutine(TypingLetters());
     }
 
