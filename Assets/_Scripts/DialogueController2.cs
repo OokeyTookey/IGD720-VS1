@@ -13,11 +13,12 @@ public class DialogueController2 : MonoBehaviour
     private float letterFadeOutTime = 0.6f;
     private float letterFadeInTime = 1f;
 
+    bool finishedPage = false;
+
     private void Start()
     {
         currentPageNumber = 0;
         chapters = GetComponentsInChildren<StoryPage>();
-        Debug.Log(chapters[currentPageNumber].textBox);
         StartCoroutine(TypingLetters());
     }
 
@@ -26,11 +27,20 @@ public class DialogueController2 : MonoBehaviour
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
             finishedSentence = true;
+            
             if (chapters[currentPageNumber].autoStart)
             {
                 NextSentence();
             }
         }
+
+        if (chapters[currentPageNumber].name.Contains("NEXT") )
+        {
+            finishedPage = true;
+            Debug.Log("Pages finished");
+            //Make the turn page button flash
+        }
+
 
         if (Input.GetButton("Submit") && finishedSentence == true)
         {
@@ -40,17 +50,21 @@ public class DialogueController2 : MonoBehaviour
 
     public void PageFlip()
     {
-
+        finishedPage = false;
     }
 
     public void NextSentence()
     {
-        currentPageNumber++;
-        StartCoroutine(TypingLetters());
-        finishedSentence = false;
+        if (!finishedPage)
+        {
+            currentPageNumber++;
+            StartCoroutine(TypingLetters());
+            finishedSentence = false;
+        }
+      
     }
 
-    public IEnumerator TypingLetters()
+    public IEnumerator TypingLetters() //Add typewrier effect
     {
         //Foreach will allow us to access a specfic variable type in statements. IE: Each letter in a sentence.
         foreach (var letter in chapters[currentPageNumber].sentence) //ToCharArray copies the chars and put them into unicode (readable)
