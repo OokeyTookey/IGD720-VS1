@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class ChapterManager : MonoBehaviour
 {
-    public GameObject[] chapterMaster;
+    /*public GameObject[] chapterMaster;
     PageSweeper[] chapters;
 
     //public CharacterWobble charWobble;
@@ -37,7 +37,7 @@ public class ChapterManager : MonoBehaviour
             currentChapter++;
 
         }
-    } */
+    } 
 
     public void NewChapter()
     {
@@ -60,5 +60,5 @@ public class ChapterManager : MonoBehaviour
             currentChapter--;
 
         }
-    }
+    }*/
 }

@@ -7,6 +7,7 @@ public class StoryPage : MonoBehaviour
 {
     public string sentence;
     public TextMeshProUGUI textBox;
+    public bool autoStart = false;
 
     private void Start()
     {

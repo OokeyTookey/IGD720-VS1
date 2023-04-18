@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System;
 
-public class PageSweeper : MonoBehaviour
+public class PageSweeper2 : MonoBehaviour
 {
-   /*// public GameObject[] bigDaddyDialogue;
+   // public GameObject[] bigDaddyDialogue;
     private GameObject parentDialogues;
     public TMP_Text[] childDialogues;
     int index;
@@ -68,6 +68,6 @@ public class PageSweeper : MonoBehaviour
             text.color = new Color(text.color.r, text.color.g, text.color.b, text.color.a + (Time.deltaTime / time));
             yield return null;
         }
-    }*/
+    }
 }
 
