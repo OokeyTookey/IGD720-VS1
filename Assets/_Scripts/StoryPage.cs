@@ -5,16 +5,11 @@ using TMPro;
 
 public class StoryPage : MonoBehaviour
 {
-    public string[] sentenceArray;
-    public TextMeshPro textBox;
+    public string sentence;
+    public TextMeshProUGUI textBox;
 
     private void Start()
     {
-        for (int i = 0; i < sentenceArray.Length -1; i++)
-        {
-        Debug.Log(sentenceArray[i]);
-
-        }
-        textBox = GetComponent<TextMeshPro>();  
+        textBox = this.GetComponent<TextMeshProUGUI>();  
     }
 }

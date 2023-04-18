@@ -5,72 +5,57 @@ using TMPro;
 public class DialogueController2 : MonoBehaviour
 {
   
-    [HideInInspector] public int index;
+    [HideInInspector] public int currentPageNumber;
     private bool finishedSentence;
 
     public float typingSpeed;
-    public string[] dialogueArray;
-
-    public TextMeshPro textBox;
-
 
     public StoryPage[] chapters;
 
 
     private void Start()
     {
-       // Debug.Log(chapters[0].name);
-       // Debug.Log(chapters[1].name);
-       //
-       // Debug.Log(chapters[0].sentenceArray);
+        currentPageNumber= 0;
+       StartCoroutine(TypingLetters());
+
+
     }
+
+
+
 
 
     private void Update()
     {
-        /*if (textBox.text == dialogueArray[index])
+        if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
+            Debug.Log("I think i ahve done it");
             finishedSentence = true;
         }
 
         if (Input.GetButton("Submit") && finishedSentence == true)
         {
-            finishedSentence = false;
-            Next();
-        }       */
+            NextPage();
+        }      
     }
 
-    public void NextSentence()
+    public void NextPage()
     {
-        if (finishedSentence == true)
-        {
-            Next();
+        Debug.Log("doing stuff");
+        
+            currentPageNumber++;
+            StartCoroutine(TypingLetters());
             finishedSentence = false;
-        }
+
     }
 
     public IEnumerator TypingLetters()
     {
         //Foreach will allow us to access a specfic variable type in statements. IE: Each letter in a sentence.
-        foreach (var letter in dialogueArray[index].ToCharArray()) //ToCharArray copies the chars and put them into unicode (readable)
+        foreach (var letter in chapters[currentPageNumber].sentence) //ToCharArray copies the chars and put them into unicode (readable)
         {
-            textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
+            chapters[currentPageNumber].textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
             yield return new WaitForSeconds(typingSpeed);
-        }
-    }
-
-    public void Next()
-    {
-        if (index < dialogueArray.Length - 1) //Check if the index is at the end of the story arc
-        {
-            index++;
-            textBox.text = ""; //Resets the text to blank
-            StartCoroutine(TypingLetters());
-        }
-
-        else //If there is no story left, set to blank N disable
-        {
-            textBox.text = "";
         }
     }
 }

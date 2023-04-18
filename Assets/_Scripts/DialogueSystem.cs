@@ -24,34 +24,23 @@ public class DialogueSystem : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < DialogueControllers.Length; i++)
-        {
-            DialogueControllers[i].GetComponentsInChildren<TMP_Text>();
-           // currentDialogue[i] = DialogueControllers[i].GetComponent<TMP_Text>();
 
-            Debug.Log(DialogueControllers[i].name);
-        }
 
-        //currentDialogue = DialogueControllers[pageIndex].GetComponentsInChildren<TMP_Text>();
+
+
+
 
         for (int i = 0; i < DialogueControllers.Length; i++)
         {
+            DialogueControllers[i].GetComponent<TMP_Text>();
         }
+
+        //currentDialogue[pageIndex] = DialogueControllers[pageIndex].GetComponent<TMP_Text>();
+
+        Debug.Log(currentDialogue[pageIndex].text);
         
 
         childDialoguesSaved = currentDialogue; //Saves the current dialogue to the saved one ()inshallah
-
-
-        Debug.Log(currentDialogue[pageIndex].text);
-
-
-
-
-       // StartCoroutine(TypingLetters());
-
-
-        //ClearAllTextBoxes();
-        //UpdateCurentDialogueToPageIndex();
     }
 
     public void ClearAllTextBoxes()
