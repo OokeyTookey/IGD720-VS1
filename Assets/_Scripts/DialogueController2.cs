@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using System.Linq;
 
 public class DialogueController2 : MonoBehaviour
 {
@@ -9,17 +12,26 @@ public class DialogueController2 : MonoBehaviour
 
     public float typingSpeed;
     public StoryPage[] chapters;
+    //public List<StoryPage> chapters;
 
     private float letterFadeOutTime = 0.6f;
     private float letterFadeInTime = 1f;
 
     bool finishedPage = false;
 
+    public Animator rightButtonAnimator;
+
+    int currentChapterLength;
+    public string NextScene;
+    bool doOnce = false;
+    public bool finishedAllDialogue = false;
+
     private void Start()
     {
         currentPageNumber = 0;
         chapters = GetComponentsInChildren<StoryPage>();
         StartCoroutine(TypingLetters());
+
     }
 
     private void Update()
@@ -27,31 +39,38 @@ public class DialogueController2 : MonoBehaviour
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
             finishedSentence = true;
-            
+
             if (chapters[currentPageNumber].autoStart)
             {
                 NextSentence();
             }
         }
 
-        if (chapters[currentPageNumber].name.Contains("NEXT") )
+        if (chapters[currentPageNumber].name.Contains("NEXT"))
         {
             finishedPage = true;
-            Debug.Log("Pages finished");
-            //Make the turn page button flash
+            if (finishedPage && !doOnce)
+            {
+                rightButtonAnimator.SetTrigger("PageComplete");
+                doOnce = true;
+            }
         }
 
 
         if (Input.GetButton("Submit") && finishedSentence == true)
         {
             NextSentence();
-        }      
+        }
     }
 
     public void PageFlip()
     {
-        finishedPage = false;
+        rightButtonAnimator.SetTrigger("Disabled");
+        PageSweeperClear();
+      // finishedAllDialogue = true;
+
     }
+
 
     public void NextSentence()
     {
@@ -61,7 +80,7 @@ public class DialogueController2 : MonoBehaviour
             StartCoroutine(TypingLetters());
             finishedSentence = false;
         }
-      
+        
     }
 
     public IEnumerator TypingLetters() //Add typewrier effect
@@ -76,11 +95,20 @@ public class DialogueController2 : MonoBehaviour
 
     //------------------------------ Page Sweeper ----------------------------------------
 
+
     public void PageSweeperClear()
     {
         for (int i = 0; i < chapters.Length; i++)
         {
             StartCoroutine(FadeOut(letterFadeOutTime, chapters[i].textBox));
+        }
+    }
+
+    public void EmptyPages()
+    {
+        for (int i = 0; i < chapters.Length; i++)
+        {
+            chapters[i].textBox.text = "";
         }
     }
 
