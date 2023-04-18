@@ -35,7 +35,7 @@ public class PageSweeper : MonoBehaviour
                 {
                     break;
                 }
-               // Debug.Log(children[index].text);
+               //Debug.Log(children[index].text);
                 index++;
             }
     }

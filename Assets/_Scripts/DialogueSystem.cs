@@ -3,61 +3,104 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class DialogueSystem : MonoBehaviour
 {
-    [HideInInspector] public int index;
-    private bool finishedSentence;
+    public int pageIndex = 0;
+    public GameObject[] DialogueControllers;
+    public TMP_Text[] childDialogues;
+
+
+    public TMP_Text[] childDialoguesSaved;
+
+    TextMeshPro currentText;
 
     public float typingSpeed;
-    public float typingSpeedMultipler;
-    public string[] dialogueArray;
 
-    public TextMeshProUGUI textBox;
+    TMP_Text[] currentDialogue;
+    public TextMeshProUGUI[] currentUIBox;
+
 
     private void Start()
     {
-        StartCoroutine(TypingLetters());
+        for (int i = 0; i < DialogueControllers.Length; i++)
+        {
+            DialogueControllers[i].GetComponentsInChildren<TMP_Text>();
+           // currentDialogue[i] = DialogueControllers[i].GetComponent<TMP_Text>();
+
+            Debug.Log(DialogueControllers[i].name);
+        }
+
+        //currentDialogue = DialogueControllers[pageIndex].GetComponentsInChildren<TMP_Text>();
+
+        for (int i = 0; i < DialogueControllers.Length; i++)
+        {
+        }
+        
+
+        childDialoguesSaved = currentDialogue; //Saves the current dialogue to the saved one ()inshallah
+
+
+        Debug.Log(currentDialogue[pageIndex].text);
+
+
+
+
+       // StartCoroutine(TypingLetters());
+
+
+        //ClearAllTextBoxes();
+        //UpdateCurentDialogueToPageIndex();
     }
 
-    private void Update()
+    public void ClearAllTextBoxes()
     {
-        //Checks if the entire sentence has been printed, if so, set the bool to true.
-        if (textBox.text == dialogueArray[index])
-        {
-            finishedSentence = true;
-        }
 
-        if (Input.GetButton("Submit") && finishedSentence == true)
-        {
-            finishedSentence = false;
-            Next();
-        }
     }
 
-    public IEnumerator TypingLetters()
+    public void UpdateCurentDialogueToPageIndex()
+    {
+        //Adds all TMP_TEXT objects which are childed to current Dialog
+        currentDialogue = DialogueControllers[pageIndex].GetComponentsInChildren<TMP_Text>();
+        currentUIBox = new TextMeshProUGUI[currentDialogue.Length];
+
+
+        for (int i = 0; i < currentDialogue.Length; i++)//Printing all the children
+        {
+            currentUIBox[i] = currentDialogue[i].GetComponent<TextMeshProUGUI>();
+           // Debug.Log(currentDialogue[i].text);
+        }
+
+        //StartCoroutine(TypingLetters());
+
+
+
+    }
+
+
+     public IEnumerator TypingLetters()
     {
         //Foreach will allow us to access a specfic variable type in statements. IE: Each letter in a sentence.
-        foreach (var letter in dialogueArray[index].ToCharArray()) //ToCharArray copies the chars and put them into unicode (readable)
+        foreach (var letter in childDialoguesSaved[pageIndex].text) 
         {
-            textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
+            childDialoguesSaved[pageIndex].text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
             yield return new WaitForSeconds(typingSpeed);
         }
     }
 
-    public void Next()
-    {
-        if (index < dialogueArray.Length - 1) //Check if the index is at the end of the story arc
-        {
-            index++;
-            textBox.text = ""; //Resets the text to blank
-            StartCoroutine(TypingLetters());
-        }
+    // textInParentObjects = new TMP_Text[parentObjects.Length];
 
-        else //If there is no story left, set to blank N disable
-        {
-            textBox.text = "";
-            this.gameObject.SetActive(false);
-        }
-    }
+    //grab all tmp and assignment the to text in parent
+
+    //Get curent text box
+    //get current dialogue 
+    //Pass the string into the typing text coroutine
+    //check if done, 
+    // if done && space bar pressed, increment nextDialogbox index
+    // 
+
+
+
+
 }

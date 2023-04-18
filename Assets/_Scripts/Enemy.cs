@@ -138,14 +138,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.rigidbody.tag == "Player")
         {
-            player.playerHealth--;
-            if (player.playerHealth <= 0)
+            if (!player.playerDead)
             {
-                player.PlayerDeath();
+                Debug.Log(collision.rigidbody.tag);
+                player.playerHealth--;
+                if (player.playerHealth <= 0)
+                {
+                    player.PlayerDeath();
+                }
             }
         }
     }

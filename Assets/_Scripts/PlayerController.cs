@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
 
     public float playerHealth;
-    bool playerDead;
+    public bool playerDead;
 
     Rigidbody2D rb;
     Animator animator;
