@@ -12,49 +12,46 @@ public class DialogueController2 : MonoBehaviour
 
     public float typingSpeed;
     public StoryPage[] chapters;
-    //public List<StoryPage> chapters;
 
     private float letterFadeOutTime = 0.6f;
     private float letterFadeInTime = 1f;
 
-    bool finishedPage = false;
+    [HideInInspector] public bool finishedPage = false;
 
-    public Animator rightButtonAnimator;
-
-    int currentChapterLength;
-    public string NextScene;
-    bool doOnce = false;
+    [HideInInspector] public bool doOnce = false;
     public bool finishedAllDialogue = false;
+
+    bool pageFlipped;
+    float fadeOutTimer;
+    float fadeOutMax = 2;
+
 
     private void Start()
     {
         currentPageNumber = 0;
         chapters = GetComponentsInChildren<StoryPage>();
-        StartCoroutine(TypingLetters());
-
     }
 
     private void Update()
     {
+        fadeOutTimer += Time.deltaTime;
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
             finishedSentence = true;
 
-            if (chapters[currentPageNumber].autoStart)
+            if (chapters[currentPageNumber].autoStartNextSentence)
             {
                 NextSentence();
             }
         }
 
-        if (chapters[currentPageNumber].name.Contains("NEXT"))
+       
+
+        if (pageFlipped && fadeOutTimer > fadeOutMax)
         {
-            finishedPage = true;
-            if (finishedPage && !doOnce)
-            {
-                rightButtonAnimator.SetTrigger("PageComplete");
-                doOnce = true;
-            }
-        }
+
+            finishedAllDialogue = true;
+        } 
 
 
         if (Input.GetButton("Submit") && finishedSentence == true)
@@ -65,10 +62,10 @@ public class DialogueController2 : MonoBehaviour
 
     public void PageFlip()
     {
-        rightButtonAnimator.SetTrigger("Disabled");
+        fadeOutTimer = 0;
+        //rightButtonAnimator.SetTrigger("Disabled");
         PageSweeperClear();
-      // finishedAllDialogue = true;
-
+        pageFlipped= true;
     }
 
 

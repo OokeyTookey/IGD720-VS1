@@ -7,7 +7,7 @@ public class StoryPage : MonoBehaviour
 {
     public string sentence;
     public TextMeshProUGUI textBox;
-    public bool autoStart = false;
+    public bool autoStartNextSentence = false;
 
     private void Awake()  //Has to be awake because dialogue controller stuff happens in start and there gets null errors.
     {
