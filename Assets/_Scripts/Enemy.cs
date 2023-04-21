@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
 
     void SetEnemyVelocity()
     {
-        if (!enemyDead)
+        if (!enemyDead) //this will override the kncokback pls disable first.then kncol
         {
             dampMovement = Vector2.SmoothDamp(dampMovement, targetDirection, ref dampMovementVelocity, turnSpeed);
             rb.velocity = dampMovement * movementSpeed;

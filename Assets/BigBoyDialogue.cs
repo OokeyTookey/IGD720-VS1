@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BigBoyDialogue : MonoBehaviour
 {
@@ -11,10 +12,17 @@ public class BigBoyDialogue : MonoBehaviour
     public DialogueController2[] controllers;
     public bool[] chapterFinished;
     int currentPage;
+    int finalPage;
     bool fadeInRightBtn = false;
+    public float typingSpeed;
+
 
     private void Start()
     {
+        controllers = GetComponentsInChildren<DialogueController2>();
+        Debug.Log(controllers.Length);
+
+        finalPage = controllers.Length;
         rightBtnAnim = rightBtn.GetComponent<Animator>();
         chapterFinished = new bool[controllers.Length];
 
@@ -31,9 +39,9 @@ public class BigBoyDialogue : MonoBehaviour
     {
         if (controllers[currentPage].currentPageNumber >= controllers[currentPage].chapters.Length - 1)
         {
-            Debug.Log("doing something");
             if (!fadeInRightBtn)
             {
+                //Debug.Log("HIIYYYAAH");
                 rightBtnAnim.SetTrigger("PageComplete");
                 fadeInRightBtn = true;
             }
@@ -42,17 +50,27 @@ public class BigBoyDialogue : MonoBehaviour
 
         if (controllers[currentPage].finishedAllDialogue)
         {
+            fadeInRightBtn = false;
             Debug.Log(controllers[currentPage]);
-           // controllers[currentPage].EmptyPages();
             currentPage++;
             controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
             rightBtnAnim.SetTrigger("Disabled");
             chapterFinished[currentPage] = false;
+        }
+
+        if (currentPage >= finalPage)
+        {
+            LoadBlankPage();
         }
     }
 
     public void PageFlip()
     {
         controllers[currentPage].PageFlip();
+    }
+
+    public void LoadBlankPage()
+    {
+        SceneManager.LoadScene("Tutorial");
     }
 }

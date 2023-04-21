@@ -7,10 +7,12 @@ using System.Linq;
 
 public class DialogueController2 : MonoBehaviour
 {
+    BigBoyDialogue parentController;
+    
     [HideInInspector] public int currentPageNumber;
     private bool finishedSentence;
 
-    public float typingSpeed;
+    //public float typingSpeed;
     public StoryPage[] chapters;
 
     private float letterFadeOutTime = 0.6f;
@@ -28,6 +30,7 @@ public class DialogueController2 : MonoBehaviour
 
     private void Start()
     {
+        parentController = FindObjectOfType<BigBoyDialogue>();
         currentPageNumber = 0;
         chapters = GetComponentsInChildren<StoryPage>();
     }
@@ -45,11 +48,8 @@ public class DialogueController2 : MonoBehaviour
             }
         }
 
-       
-
         if (pageFlipped && fadeOutTimer > fadeOutMax)
         {
-
             finishedAllDialogue = true;
         } 
 
@@ -63,7 +63,6 @@ public class DialogueController2 : MonoBehaviour
     public void PageFlip()
     {
         fadeOutTimer = 0;
-        //rightButtonAnimator.SetTrigger("Disabled");
         PageSweeperClear();
         pageFlipped= true;
     }
@@ -86,7 +85,7 @@ public class DialogueController2 : MonoBehaviour
         foreach (var letter in chapters[currentPageNumber].sentence) //ToCharArray copies the chars and put them into unicode (readable)
         {
             chapters[currentPageNumber].textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSeconds(parentController.typingSpeed);
         }
     }
 
