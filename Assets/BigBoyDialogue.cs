@@ -16,6 +16,11 @@ public class BigBoyDialogue : MonoBehaviour
     bool fadeInRightBtn = false;
     public float typingSpeed;
 
+    float waitForNextSceneLoadTimer;
+    float waitForNextSceneTime = 4;
+    bool doOnce = false;
+    bool doOnce2 = false;
+
 
     private void Start()
     {
@@ -37,11 +42,12 @@ public class BigBoyDialogue : MonoBehaviour
 
     private void Update()
     {
+        waitForNextSceneLoadTimer += Time.deltaTime;
+
         if (controllers[currentPage].currentPageNumber >= controllers[currentPage].chapters.Length - 1)
         {
             if (!fadeInRightBtn)
             {
-                //Debug.Log("HIIYYYAAH");
                 rightBtnAnim.SetTrigger("PageComplete");
                 fadeInRightBtn = true;
             }
@@ -50,17 +56,29 @@ public class BigBoyDialogue : MonoBehaviour
 
         if (controllers[currentPage].finishedAllDialogue)
         {
-            fadeInRightBtn = false;
-            Debug.Log(controllers[currentPage]);
-            currentPage++;
-            controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
-            rightBtnAnim.SetTrigger("Disabled");
-            chapterFinished[currentPage] = false;
-        }
+            if (!controllers[currentPage].finalChapter)
+            {
+                fadeInRightBtn = false;
+                Debug.Log(controllers[currentPage]);
+                currentPage++;
+                controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
+                rightBtnAnim.SetTrigger("Disabled");
+                chapterFinished[currentPage] = false;
+            }
+           
+            if (controllers[currentPage].finalChapter && !doOnce)
+            {
+                waitForNextSceneLoadTimer = 0;
+               fadeInRightBtn = false;
+                rightBtnAnim.SetTrigger("Disabled");
+                doOnce = true;
+            }
 
-        if (currentPage >= finalPage)
-        {
-            LoadBlankPage();
+            if (waitForNextSceneLoadTimer >= waitForNextSceneTime && doOnce && !doOnce2)
+            {
+                //SceneManager.LoadScene(controllers[currentPage].nextSceneName);
+                doOnce2 = true;
+            }
         }
     }
 

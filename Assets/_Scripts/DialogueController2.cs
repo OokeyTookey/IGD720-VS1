@@ -12,7 +12,6 @@ public class DialogueController2 : MonoBehaviour
     [HideInInspector] public int currentPageNumber;
     private bool finishedSentence;
 
-    //public float typingSpeed;
     public StoryPage[] chapters;
 
     private float letterFadeOutTime = 0.6f;
@@ -27,6 +26,8 @@ public class DialogueController2 : MonoBehaviour
     float fadeOutTimer;
     float fadeOutMax = 2;
 
+    public bool finalChapter;
+    public string nextSceneName;
 
     private void Start()
     {
@@ -37,6 +38,7 @@ public class DialogueController2 : MonoBehaviour
 
     private void Update()
     {
+
         fadeOutTimer += Time.deltaTime;
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {

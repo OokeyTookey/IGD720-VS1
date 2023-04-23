@@ -13,4 +13,5 @@ public class StoryPage : MonoBehaviour
     {
         textBox = this.GetComponent<TextMeshProUGUI>(); 
     }
+
 }
