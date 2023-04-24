@@ -14,7 +14,7 @@ public class DialogueController2 : MonoBehaviour
 
     public StoryPage[] chapters;
 
-    private float letterFadeOutTime = 0.6f;
+    private float letterFadeOutTime = 0.2f;
     private float letterFadeInTime = 1f;
 
     [HideInInspector] public bool finishedPage = false;

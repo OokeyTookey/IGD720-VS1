@@ -11,7 +11,6 @@ public class EnterDoesThing : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            Debug.Log("Do a thing");
             controller.NextSentence();
             this.gameObject.SetActive(false);
         }

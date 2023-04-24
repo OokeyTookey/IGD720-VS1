@@ -17,9 +17,10 @@ public class BigBoyDialogue : MonoBehaviour
     public float typingSpeed;
 
     float waitForNextSceneLoadTimer;
-    float waitForNextSceneTime = 4;
+    float waitForNextSceneTime = 2;
     bool doOnce = false;
     bool doOnce2 = false;
+    public Animator playerAnim;
 
 
     private void Start()
@@ -94,5 +95,11 @@ public class BigBoyDialogue : MonoBehaviour
     public void LoadBlankPage()
     {
         SceneManager.LoadScene("Tutorial");
+    }
+
+    public void FadePlayerOut()
+    {
+        playerAnim = FindAnyObjectByType<PlayerController>().GetComponent<Animator>();
+        playerAnim.SetTrigger("FadePlayerOut");
     }
 }

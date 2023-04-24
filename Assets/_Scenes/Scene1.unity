@@ -6475,6 +6475,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693772523}
   m_CullTransparentMesh: 1
+--- !u!95 &1723873766 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7030895010012664434, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+  m_PrefabInstance: {fileID: 7030895010258275148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1727326236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1329478867382734163, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
@@ -7351,6 +7356,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 282962903}
@@ -7358,6 +7371,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2046368458}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 827327406}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: FadeOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8588051707942525685, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_Name
       value: RightButton
@@ -7657,6 +7694,7 @@ MonoBehaviour:
   controllers: []
   chapterFinished: 
   typingSpeed: 0.02
+  playerAnim: {fileID: 1723873766}
 --- !u!1 &2083929381
 GameObject:
   m_ObjectHideFlags: 0
@@ -7926,6 +7964,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7030895010012664433, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030895010012664435, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
