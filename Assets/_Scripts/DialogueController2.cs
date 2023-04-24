@@ -79,8 +79,16 @@ public class DialogueController2 : MonoBehaviour
             currentPageNumber++;
             StartCoroutine(TypingLetters());
             finishedSentence = false;
+        }    
+    }
+
+    public void StartSentence()
+    {
+        if (!finishedPage)
+        {
+            StartCoroutine(TypingLetters());
+            finishedSentence = false;
         }
-        
     }
 
     public IEnumerator TypingLetters() //Add typewrier effect

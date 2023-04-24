@@ -37,6 +37,8 @@ public class BigBoyDialogue : MonoBehaviour
         }
 
         controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
+        rightBtn.interactable = false;
+
     }
 
     private void Update()
@@ -48,6 +50,7 @@ public class BigBoyDialogue : MonoBehaviour
             if (!fadeInRightBtn && controllers[currentPage].levelCompleted)
             {
                 rightBtnAnim.SetTrigger("PageComplete");
+                rightBtn.interactable = true;
                 fadeInRightBtn = true;
             }
         }
@@ -58,17 +61,20 @@ public class BigBoyDialogue : MonoBehaviour
             if (!controllers[currentPage].finalChapter)
             {
                 fadeInRightBtn = false;
+                chapterFinished[currentPage] = true;
                 currentPage++;
                 controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
                 rightBtnAnim.SetTrigger("Disabled");
+                rightBtn.interactable = false;
                 chapterFinished[currentPage] = false;
             }
-           
+
             if (controllers[currentPage].finalChapter && !doOnce)
             {
                 waitForNextSceneLoadTimer = 0;
-               fadeInRightBtn = false;
+                fadeInRightBtn = false;
                 rightBtnAnim.SetTrigger("Disabled");
+                rightBtn.interactable = false;
                 doOnce = true;
             }
 
