@@ -25,7 +25,6 @@ public class BigBoyDialogue : MonoBehaviour
     private void Start()
     {
         controllers = GetComponentsInChildren<DialogueController2>();
-        Debug.Log(controllers.Length);
 
         finalPage = controllers.Length;
         rightBtnAnim = rightBtn.GetComponent<Animator>();
@@ -46,7 +45,7 @@ public class BigBoyDialogue : MonoBehaviour
 
         if (controllers[currentPage].currentPageNumber >= controllers[currentPage].chapters.Length - 1)
         {
-            if (!fadeInRightBtn)
+            if (!fadeInRightBtn && controllers[currentPage].levelCompleted)
             {
                 rightBtnAnim.SetTrigger("PageComplete");
                 fadeInRightBtn = true;
@@ -59,7 +58,6 @@ public class BigBoyDialogue : MonoBehaviour
             if (!controllers[currentPage].finalChapter)
             {
                 fadeInRightBtn = false;
-                Debug.Log(controllers[currentPage]);
                 currentPage++;
                 controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
                 rightBtnAnim.SetTrigger("Disabled");
@@ -76,7 +74,7 @@ public class BigBoyDialogue : MonoBehaviour
 
             if (waitForNextSceneLoadTimer >= waitForNextSceneTime && doOnce && !doOnce2)
             {
-                //SceneManager.LoadScene(controllers[currentPage].nextSceneName);
+                SceneManager.LoadScene(controllers[currentPage].nextSceneName);
                 doOnce2 = true;
             }
         }

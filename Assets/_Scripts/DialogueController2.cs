@@ -29,6 +29,8 @@ public class DialogueController2 : MonoBehaviour
     public bool finalChapter;
     public string nextSceneName;
 
+    public bool levelCompleted;
+
     private void Start()
     {
         parentController = FindObjectOfType<BigBoyDialogue>();
