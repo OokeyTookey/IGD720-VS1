@@ -2,18 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
 {
     [SerializeField] private Canvas canvas;
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    public string ID;
+    [HideInInspector]public  TMP_Text text;
+    public Color correctTextColour;
+    public bool doLerp;
+    float lerpSpeed = 0.5f;
 
     private void Awake()
     {
+        text = this.GetComponent<TMP_Text>();
         canvas = FindAnyObjectByType<BigBoyDialogue>().GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup= GetComponent<CanvasGroup>();
+    }
+
+
+    private void Update()
+    {
+        if (doLerp)
+        {
+            text.color = Color.Lerp(text.color, correctTextColour, Time.deltaTime * lerpSpeed);
+
+        }
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
