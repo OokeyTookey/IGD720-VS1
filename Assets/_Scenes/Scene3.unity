@@ -7014,6 +7014,10 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1434951236698126770, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
+      propertyPath: playerHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1434951236698126770, guid: ecd524c1eedeaf84e9af5ee94ce209b2, type: 3}
       propertyPath: movementSpeed
       value: 1.5
       objectReference: {fileID: 0}

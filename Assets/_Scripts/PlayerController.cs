@@ -24,14 +24,21 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
 
+    [HideInInspector]public bool playerTakenDamage;
+    float invincibilityTimer;
+    float invincibilityTimerMax = 4;
+
+    SpriteRenderer spriteRenderer;
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
+        animator = this.GetComponent<Animator>();
+        spriteRenderer = this.GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
     {
+        invincibilityTimer += Time.deltaTime;
         if (!playerDead)
         {
             dampMovement = Vector2.SmoothDamp(
@@ -52,6 +59,24 @@ public class PlayerController : MonoBehaviour
             if (movementInput == Vector2.zero)
             {
                 animator.SetFloat("Speed", 0);
+            }
+
+            if (playerTakenDamage)
+            {
+
+            }
+        }
+    }
+
+    public void PlayerTakesDamage()
+    {
+        if (!playerDead && invincibilityTimer >= invincibilityTimerMax)
+        {
+            playerHealth--;
+            invincibilityTimer = 0;
+            if (playerHealth <= 0)
+            {
+                PlayerDeath();
             }
         }
     }

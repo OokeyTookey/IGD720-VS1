@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
     SpriteRenderer enemyImage;
 
     bool enemyDead;
+    bool doOnce;
 
     public bool knockedBack = false;
    [HideInInspector] public float knockBackTimer = 0f;
@@ -153,19 +154,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.rigidbody.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            if (!player.playerDead)
+            player.PlayerTakesDamage();
+            /*if (!player.playerDead)
             {
-                Debug.Log(collision.rigidbody.tag);
                 player.playerHealth--;
                 if (player.playerHealth <= 0)
                 {
                     player.PlayerDeath();
                 }
-            }
+                Debug.Log(player.playerHealth);
+                doOnce = true;
+            }*/
         }
     }
 
