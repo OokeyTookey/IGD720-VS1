@@ -167,6 +167,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   ID: JESUS
+  text: {fileID: 0}
+  correctTextColour: {r: 0.24705882, g: 0.5411765, b: 0.30588236, a: 1}
+  doLerp: 0
 --- !u!225 &8912051191110026738
 CanvasGroup:
   m_ObjectHideFlags: 0

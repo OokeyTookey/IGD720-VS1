@@ -17,7 +17,7 @@ public class BigBoyDialogue : MonoBehaviour
     public float typingSpeed;
 
     float waitForNextSceneLoadTimer;
-    float waitForNextSceneTime = 2;
+    float waitForNextSceneTime = 0.4f;
     bool doOnce = false;
     bool doOnce2 = false;
     public Animator playerAnim;
@@ -50,9 +50,7 @@ public class BigBoyDialogue : MonoBehaviour
         {
             if (!fadeInRightBtn && controllers[currentPage].levelCompleted)
             {
-                rightBtnAnim.SetTrigger("PageComplete");
-                rightBtn.interactable = true;
-                fadeInRightBtn = true;
+                RightBtnActive();
             }
         }
         
@@ -87,19 +85,21 @@ public class BigBoyDialogue : MonoBehaviour
         }
     }
 
-    public void PageFlip()
-    {
-        controllers[currentPage].PageFlip();
-    }
-
-    public void LoadBlankPage()
-    {
-        SceneManager.LoadScene("Tutorial");
-    }
-
     public void FadePlayerOut()
     {
         playerAnim = FindAnyObjectByType<PlayerController>().GetComponent<Animator>();
         playerAnim.SetTrigger("FadePlayerOut");
+    }
+
+    public void RightBtnActive()
+    {
+        rightBtnAnim.SetTrigger("PageComplete");
+        rightBtn.interactable = true;
+        fadeInRightBtn = true;
+    }
+
+    public void PageFlip()
+    {
+        controllers[currentPage].PageFlip();
     }
 }

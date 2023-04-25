@@ -40,22 +40,25 @@ public class DialogueController2 : MonoBehaviour
 
     private void Update()
     {
-
         fadeOutTimer += Time.deltaTime;
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
-            finishedSentence = true;
+            Debug.Log(currentPageNumber);
 
+            finishedSentence = true;
             if (chapters[currentPageNumber].autoStartNextSentence)
             {
                 NextSentence();
             }
         }
+        else
+        {
+        }
 
         if (pageFlipped && fadeOutTimer > fadeOutMax)
         {
             finishedAllDialogue = true;
-        } 
+        }
     }
 
     public void PageFlip()
@@ -70,10 +73,14 @@ public class DialogueController2 : MonoBehaviour
     {
         if (!finishedPage)
         {
-            currentPageNumber++;
-            StartCoroutine(TypingLetters());
-            finishedSentence = false;
-        }    
+            if (currentPageNumber < chapters.Length-1)
+            {
+                currentPageNumber++;
+                StartCoroutine(TypingLetters());
+                finishedSentence = true;
+
+            }
+        }
     }
 
     public void StartSentence()

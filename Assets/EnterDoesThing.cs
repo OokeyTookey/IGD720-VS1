@@ -6,7 +6,6 @@ public class EnterDoesThing : MonoBehaviour
 {
     public DialogueController2 controller;
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")

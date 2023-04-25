@@ -13,7 +13,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
     [HideInInspector]public  TMP_Text text;
     public Color correctTextColour;
     public bool doLerp;
-    float lerpSpeed = 0.5f;
+    float lerpSpeed = 1.5f;
 
     private void Awake()
     {

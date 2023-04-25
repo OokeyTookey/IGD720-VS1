@@ -11,9 +11,12 @@ public class Treasure : MonoBehaviour
     bool openedChest = false;
     public DialogueController2 dialogueController;
     SpriteRenderer parentSpriteRenderer;
+ public BigBoyDialogue parentController;
+    bool doOnce;
 
     void Start()
-    {
+    { 
+        parentController = FindAnyObjectByType<BigBoyDialogue>();    
         animator = this.GetComponentInParent<Animator>();
         boxCollider = this.GetComponent<BoxCollider2D>();
         parentSpriteRenderer = this.GetComponentInParent<SpriteRenderer>();
@@ -25,6 +28,12 @@ public class Treasure : MonoBehaviour
         {
             dialogueController.levelCompleted = true;
             misisonComplete = true;
+        }
+
+        if (misisonComplete && !doOnce)
+        {
+          
+            //doOnce = true;
         }
     }
 
@@ -38,7 +47,10 @@ public class Treasure : MonoBehaviour
         if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
         {
             animator.SetTrigger("Treasure");
-            StartCoroutine(FadeOut(1.5f, parentSpriteRenderer));
+            animator.SetTrigger("FadeAway");
+
+           // StartCoroutine(FadeOut(1.5f, parentSpriteRenderer));
+            Debug.Log("open ttreasure");
             boxCollider.enabled = false;
             openedChest = true;
             dialogueController.NextSentence();
