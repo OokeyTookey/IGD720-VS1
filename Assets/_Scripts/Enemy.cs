@@ -7,6 +7,8 @@ public class Enemy : MonoBehaviour
 {
     public float enemyDetectionRange;
     public float movementSpeed;
+
+    [SerializeField] GameObject gameDialogueCanvas;
     
     bool awareOfPlayer;
     Vector2 directionToPlayer;
@@ -37,6 +39,8 @@ public class Enemy : MonoBehaviour
    [HideInInspector] public float knockBackTimer = 0f;
     float knockBackTimerMax = 2f;
 
+    public GameObject DroppedText;
+
     private void Awake()
     {
         targetDirection = transform.up;
@@ -48,6 +52,7 @@ public class Enemy : MonoBehaviour
         rb = this.GetComponent<Rigidbody2D>();
         playerRB = player.GetComponent<Rigidbody2D>();
         enemyImage = this.GetComponent<SpriteRenderer>();
+        gameDialogueCanvas = FindAnyObjectByType<BigBoyDialogue>().gameObject;
     }
 
     private void Update()
@@ -66,7 +71,6 @@ public class Enemy : MonoBehaviour
         {
             awareOfPlayer = false;
         }
-
     }
 
     private void FixedUpdate()
@@ -151,6 +155,7 @@ public class Enemy : MonoBehaviour
             rb.angularVelocity = 0;
             enemyDead = true;
             StartCoroutine(FadeOut(8f, enemyImage));
+            Instantiate(DroppedText, transform.position, transform.rotation, gameDialogueCanvas.transform);
         }
     }
 

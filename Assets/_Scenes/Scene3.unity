@@ -172,7 +172,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &224318862
 Transform:
   m_ObjectHideFlags: 0
@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
+  m_AssetsPPU: 200
   m_RefResolutionX: 1920
   m_RefResolutionY: 1080
   m_UpscaleRT: 0
@@ -6518,12 +6518,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
       propertyPath: health
-      value: 999
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
       propertyPath: dampSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
+      propertyPath: DroppedText
+      value: 
+      objectReference: {fileID: 6568316722475644068, guid: 0065ee538cfb3904f9604b51accee6aa, type: 3}
     - target: {fileID: 2357014748352011068, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
       propertyPath: movementSpeed
       value: 0.5

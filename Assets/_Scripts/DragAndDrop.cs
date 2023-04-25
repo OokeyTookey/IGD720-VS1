@@ -11,6 +11,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
 
     private void Awake()
     {
+        canvas = FindAnyObjectByType<BigBoyDialogue>().GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup= GetComponent<CanvasGroup>();
     }

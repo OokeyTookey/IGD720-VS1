@@ -56,12 +56,6 @@ public class DialogueController2 : MonoBehaviour
         {
             finishedAllDialogue = true;
         } 
-
-
-        if (Input.GetButton("Submit") && finishedSentence == true)
-        {
-            NextSentence();
-        }
     }
 
     public void PageFlip()
