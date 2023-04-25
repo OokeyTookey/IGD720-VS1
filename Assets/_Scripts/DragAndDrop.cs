@@ -29,9 +29,7 @@ public class DragAndDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler
         if (doLerp)
         {
             text.color = Color.Lerp(text.color, correctTextColour, Time.deltaTime * lerpSpeed);
-
         }
-
     }
 
     public void OnBeginDrag(PointerEventData eventData)

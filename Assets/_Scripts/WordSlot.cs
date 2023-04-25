@@ -8,11 +8,17 @@ public class WordSlot : MonoBehaviour, IDropHandler
 {
     public string ID;
     public DragAndDrop other;
-    Color initialColor;
+    public DialogueController2 controller;
+    [HideInInspector] public bool misisonComplete;
+    bool draggedCorrectDialogue;
 
-    private void Start()
+    private void Update()
     {
-      
+        if (draggedCorrectDialogue && !misisonComplete)
+        {
+            controller.levelCompleted = true;
+            misisonComplete = true;
+        }
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -23,6 +29,8 @@ public class WordSlot : MonoBehaviour, IDropHandler
             if (other.ID == ID)
             {
                 other.doLerp = true;
+                draggedCorrectDialogue = true;
+                controller.NextSentence();
             }
         }
     }

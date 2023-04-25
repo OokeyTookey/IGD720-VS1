@@ -154,7 +154,7 @@ public class Enemy : MonoBehaviour
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;
             enemyDead = true;
-            StartCoroutine(FadeOut(8f, enemyImage));
+            StartCoroutine(FadeOut(1f, enemyImage));
             Instantiate(DroppedText, transform.position, transform.rotation, gameDialogueCanvas.transform);
         }
     }
@@ -164,16 +164,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.PlayerTakesDamage();
-            /*if (!player.playerDead)
-            {
-                player.playerHealth--;
-                if (player.playerHealth <= 0)
-                {
-                    player.PlayerDeath();
-                }
-                Debug.Log(player.playerHealth);
-                doOnce = true;
-            }*/
         }
     }
 

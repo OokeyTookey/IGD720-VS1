@@ -29,12 +29,6 @@ public class Treasure : MonoBehaviour
             dialogueController.levelCompleted = true;
             misisonComplete = true;
         }
-
-        if (misisonComplete && !doOnce)
-        {
-          
-            //doOnce = true;
-        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

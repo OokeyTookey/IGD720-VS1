@@ -70,6 +70,7 @@ public class BigBoyDialogue : MonoBehaviour
 
             if (controllers[currentPage].finalChapter && !doOnce)
             {
+                Debug.Log("something");
                 waitForNextSceneLoadTimer = 0;
                 fadeInRightBtn = false;
                 rightBtnAnim.SetTrigger("Disabled");

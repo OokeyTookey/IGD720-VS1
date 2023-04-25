@@ -10,7 +10,7 @@ public class DialogueController2 : MonoBehaviour
     BigBoyDialogue parentController;
     
     [HideInInspector] public int currentPageNumber;
-    private bool finishedSentence;
+    public bool finishedSentence;
 
     public StoryPage[] chapters;
 
@@ -43,7 +43,6 @@ public class DialogueController2 : MonoBehaviour
         fadeOutTimer += Time.deltaTime;
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
-            Debug.Log(currentPageNumber);
 
             finishedSentence = true;
             if (chapters[currentPageNumber].autoStartNextSentence)
@@ -73,12 +72,11 @@ public class DialogueController2 : MonoBehaviour
     {
         if (!finishedPage)
         {
-            if (currentPageNumber < chapters.Length-1)
+            if (currentPageNumber <= chapters.Length-1)
             {
                 currentPageNumber++;
                 StartCoroutine(TypingLetters());
                 finishedSentence = true;
-
             }
         }
     }
