@@ -32,6 +32,10 @@ public class Enemy : MonoBehaviour
 
     bool enemyDead;
 
+    public bool knockedBack = false;
+   [HideInInspector] public float knockBackTimer = 0f;
+    float knockBackTimerMax = 2f;
+
     private void Awake()
     {
         targetDirection = transform.up;
@@ -48,6 +52,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         dizzyTimer += Time.deltaTime;
+        knockBackTimer += Time.deltaTime;
 
         Vector2 distanceFromEnemyToPlayer = player.transform.position - transform.position;
         directionToPlayer = distanceFromEnemyToPlayer.normalized;
@@ -60,6 +65,7 @@ public class Enemy : MonoBehaviour
         {
             awareOfPlayer = false;
         }
+
     }
 
     private void FixedUpdate()
@@ -75,7 +81,16 @@ public class Enemy : MonoBehaviour
             if (!enemyDead)
             {
                 UpdateTargetDirection();
-                SetEnemyVelocity();
+
+                if (!knockedBack)
+                {
+                    SetEnemyVelocity();
+                }
+
+                if (knockedBack && knockBackTimer >= knockBackTimerMax)
+                {
+                    knockedBack = false;
+                }
             }
         }
     }

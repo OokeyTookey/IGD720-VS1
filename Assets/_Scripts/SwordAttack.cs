@@ -37,14 +37,19 @@ public class SwordAttack : MonoBehaviour
                 {
                     currentEnemyHit.ReduceHp(playerController.swordDamage);
 
-                    Vector2 direction = (currentEnemyHit.transform.position - playerController.transform.position);
-                    currentEnemyRB.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+                    currentEnemyHit.knockedBack = true;
+
+                     Vector2 direction = (currentEnemyHit.transform.position - playerController.transform.position).normalized;
+                     currentEnemyRB.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+                    currentEnemyHit.knockBackTimer = 0;
                     enableAttack = false;
                 }
                 else
                 {
                     currentEnemyRB.velocity= Vector2.zero;
                 }
+
+               
             }
         }
     }
