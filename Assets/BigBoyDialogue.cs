@@ -17,7 +17,7 @@ public class BigBoyDialogue : MonoBehaviour
     public float typingSpeed;
 
     float waitForNextSceneLoadTimer;
-    float waitForNextSceneTime = 0.4f;
+    float waitForNextSceneTime = 0.6f;
     bool doOnce = false;
     bool doOnce2 = false;
     public Animator playerAnim;
@@ -39,7 +39,6 @@ public class BigBoyDialogue : MonoBehaviour
 
         controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
         rightBtn.interactable = false;
-
     }
 
     private void Update()
@@ -68,15 +67,14 @@ public class BigBoyDialogue : MonoBehaviour
                 chapterFinished[currentPage] = false;
             }
 
-            if (controllers[currentPage].finalChapter && !doOnce)
+           /* if (controllers[currentPage].finalChapter && !doOnce)
             {
-                Debug.Log("something");
                 waitForNextSceneLoadTimer = 0;
                 fadeInRightBtn = false;
                 rightBtnAnim.SetTrigger("Disabled");
                 rightBtn.interactable = false;
                 doOnce = true;
-            }
+            }*/
 
             if (waitForNextSceneLoadTimer >= waitForNextSceneTime && doOnce && !doOnce2)
             {

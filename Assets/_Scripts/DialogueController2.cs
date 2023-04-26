@@ -43,7 +43,7 @@ public class DialogueController2 : MonoBehaviour
         fadeOutTimer += Time.deltaTime;
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
-
+            Debug.Log(chapters[currentPageNumber].name);
             finishedSentence = true;
             if (chapters[currentPageNumber].autoStartNextSentence)
             {
@@ -76,6 +76,17 @@ public class DialogueController2 : MonoBehaviour
             {
                 currentPageNumber++;
                 StartCoroutine(TypingLetters());
+                finishedSentence = true;
+            }
+        }
+    }
+
+    public void NotNextSentenceButDone()
+    {
+        if (!finishedPage)
+        {
+            if (currentPageNumber <= chapters.Length - 1)
+            {
                 finishedSentence = true;
             }
         }
@@ -145,4 +156,6 @@ public class DialogueController2 : MonoBehaviour
             yield return null;
         }
     }
+
+
 }

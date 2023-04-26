@@ -9,7 +9,7 @@ public class WordSlot : MonoBehaviour, IDropHandler
     public string ID;
     public DragAndDrop other;
     public DialogueController2 controller;
-    [HideInInspector] public bool misisonComplete;
+    [HideInInspector] public bool misisonComplete = false;
     bool draggedCorrectDialogue;
 
     private void Update()
@@ -18,6 +18,7 @@ public class WordSlot : MonoBehaviour, IDropHandler
         {
             controller.levelCompleted = true;
             misisonComplete = true;
+            Debug.Log("ShouldActivateBtn");
         }
     }
 
@@ -30,7 +31,7 @@ public class WordSlot : MonoBehaviour, IDropHandler
             {
                 other.doLerp = true;
                 draggedCorrectDialogue = true;
-                controller.NextSentence();
+                controller.NotNextSentenceButDone();
             }
         }
     }

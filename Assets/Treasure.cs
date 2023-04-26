@@ -7,11 +7,12 @@ public class Treasure : MonoBehaviour
 {
     Animator animator;
     BoxCollider2D boxCollider;
+    BoxCollider2D parentBoxCollider;
     [HideInInspector] public bool misisonComplete;
     bool openedChest = false;
     public DialogueController2 dialogueController;
     SpriteRenderer parentSpriteRenderer;
- public BigBoyDialogue parentController;
+    public BigBoyDialogue parentController;
     bool doOnce;
 
     void Start()
@@ -19,6 +20,7 @@ public class Treasure : MonoBehaviour
         parentController = FindAnyObjectByType<BigBoyDialogue>();    
         animator = this.GetComponentInParent<Animator>();
         boxCollider = this.GetComponent<BoxCollider2D>();
+        parentBoxCollider = this.GetComponentInParent<BoxCollider2D>();
         parentSpriteRenderer = this.GetComponentInParent<SpriteRenderer>();
     }
 
@@ -42,12 +44,10 @@ public class Treasure : MonoBehaviour
         {
             animator.SetTrigger("Treasure");
             animator.SetTrigger("FadeAway");
-
-           // StartCoroutine(FadeOut(1.5f, parentSpriteRenderer));
-            Debug.Log("open ttreasure");
             boxCollider.enabled = false;
+            parentBoxCollider.enabled= false;
             openedChest = true;
-            dialogueController.NextSentence();
+            dialogueController.NotNextSentenceButDone();
         }
     }
 
