@@ -14,6 +14,9 @@ public class Treasure : MonoBehaviour
     SpriteRenderer parentSpriteRenderer;
     public BigBoyDialogue parentController;
     bool doOnce;
+   public bool thereIsMoreDialogue = false;
+   public bool dropsItem = false;
+    public GameObject droppedText;
 
     void Start()
     { 
@@ -42,12 +45,17 @@ public class Treasure : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && Input.GetKeyDown(KeyCode.E))
         {
-            animator.SetTrigger("Treasure");
-            animator.SetTrigger("FadeAway");
-            boxCollider.enabled = false;
-            parentBoxCollider.enabled= false;
-            openedChest = true;
-            dialogueController.NotNextSentenceButDone();
+            if (!thereIsMoreDialogue) {
+                FadeAwayChest();
+                dialogueController.NotNextSentenceButDone();
+            }
+
+            if (thereIsMoreDialogue)
+            {
+                FadeAwayChest();
+                dialogueController.NextSentence();
+            }
+           
         }
     }
 
@@ -60,4 +68,19 @@ public class Treasure : MonoBehaviour
             yield return null;
         }
     }
+
+    public void FadeAwayChest()
+    {
+        animator.SetTrigger("Treasure");
+        animator.SetTrigger("FadeAway");
+        boxCollider.enabled = false;
+        parentBoxCollider.enabled = false;
+        openedChest = true;
+
+        if (dropsItem)
+        {
+            Instantiate(droppedText, transform.position, transform.rotation, parentController.transform);
+        }
+    }
+
 }

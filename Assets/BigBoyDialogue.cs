@@ -67,13 +67,24 @@ public class BigBoyDialogue : MonoBehaviour
                 chapterFinished[currentPage] = false;
             }
 
-           /* if (controllers[currentPage].finalChapter && !doOnce)
+             if (controllers[currentPage].finalChapter && !doOnce)
+             {
+                 waitForNextSceneLoadTimer = 0;
+                 fadeInRightBtn = false;
+                 rightBtnAnim.SetTrigger("Disabled");
+                 rightBtn.interactable = false;
+                 doOnce = true;
+             }
+
+           /* if (controllers[currentPage].finalChapter)
             {
-                waitForNextSceneLoadTimer = 0;
                 fadeInRightBtn = false;
+                chapterFinished[currentPage] = true;
+                currentPage++;
+                controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
                 rightBtnAnim.SetTrigger("Disabled");
                 rightBtn.interactable = false;
-                doOnce = true;
+                chapterFinished[currentPage] = false;
             }*/
 
             if (waitForNextSceneLoadTimer >= waitForNextSceneTime && doOnce && !doOnce2)

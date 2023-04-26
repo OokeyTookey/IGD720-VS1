@@ -11,6 +11,7 @@ public class WordSlot : MonoBehaviour, IDropHandler
     public DialogueController2 controller;
     [HideInInspector] public bool misisonComplete = false;
     bool draggedCorrectDialogue;
+    public bool finalDialogue;
 
     private void Update()
     {
@@ -31,7 +32,17 @@ public class WordSlot : MonoBehaviour, IDropHandler
             {
                 other.doLerp = true;
                 draggedCorrectDialogue = true;
-                controller.NotNextSentenceButDone();
+
+                if (finalDialogue)
+                {
+                    controller.NextSentence();
+                }
+
+                if (!finalDialogue)
+                {
+                    controller.NotNextSentenceButDone();
+                }
+                
             }
         }
     }
