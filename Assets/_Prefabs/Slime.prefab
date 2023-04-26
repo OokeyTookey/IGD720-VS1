@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4858440792718897149
 SpriteRenderer:
@@ -101,8 +101,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 1
+  m_LinearDrag: 50
+  m_AngularDrag: 20
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -184,7 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDetectionRange: 1
-  movementSpeed: 0.3
+  movementSpeed: 0.5
+  gameDialogueCanvas: {fileID: 0}
   turnSpeed: 0.5
   dizzyTimerWait: 0.2
-  health: 3
+  health: 2
+  knockedBack: 0
+  knockBackTimer: 0
+  DroppedText: {fileID: 6568316722475644068, guid: cc68049ccbd38cf4ba0fb05aceec01d2, type: 3}
