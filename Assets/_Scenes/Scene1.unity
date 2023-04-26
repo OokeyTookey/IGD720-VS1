@@ -4058,6 +4058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0
@@ -4495,6 +4496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0
@@ -5262,10 +5264,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
-  chapters:
-  - {fileID: 591949004}
-  - {fileID: 623644872}
-  - {fileID: 1451841540}
+  finishedSentence: 0
+  chapters: []
   finishedPage: 0
   doOnce: 0
   finishedAllDialogue: 0
@@ -7693,7 +7693,7 @@ MonoBehaviour:
   rightBtn: {fileID: 1991454530}
   controllers: []
   chapterFinished: 
-  typingSpeed: 0.02
+  typingSpeed: 0.000001
   playerAnim: {fileID: 1723873766}
 --- !u!1 &2083929381
 GameObject:
@@ -7754,6 +7754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0

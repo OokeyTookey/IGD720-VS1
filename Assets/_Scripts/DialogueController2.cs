@@ -38,20 +38,20 @@ public class DialogueController2 : MonoBehaviour
         chapters = GetComponentsInChildren<StoryPage>();
     }
 
+    //if all finished serwnces = true
+    //next sentence.
+
     private void Update()
     {
         fadeOutTimer += Time.deltaTime;
+
         if (chapters[currentPageNumber].textBox.text == chapters[currentPageNumber].sentence)
         {
-            Debug.Log(chapters[currentPageNumber].name);
             finishedSentence = true;
             if (chapters[currentPageNumber].autoStartNextSentence)
             {
                 NextSentence();
             }
-        }
-        else
-        {
         }
 
         if (pageFlipped && fadeOutTimer > fadeOutMax)
