@@ -153,7 +153,9 @@ MonoBehaviour:
   ID: Sentences
   text: {fileID: 0}
   correctTextColour: {r: 0.24705882, g: 0.5411765, b: 0.30588236, a: 1}
+  transparrent: {r: 1, g: 1, b: 1, a: 0}
   doLerp: 0
+  fadeOut: 0
 --- !u!225 &8912051191110026738
 CanvasGroup:
   m_ObjectHideFlags: 0

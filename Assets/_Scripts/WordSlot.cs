@@ -19,7 +19,6 @@ public class WordSlot : MonoBehaviour, IDropHandler
         {
             controller.levelCompleted = true;
             misisonComplete = true;
-            Debug.Log("ShouldActivateBtn");
         }
     }
 

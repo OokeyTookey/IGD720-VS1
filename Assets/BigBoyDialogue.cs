@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BigBoyDialogue : MonoBehaviour
 {
@@ -52,7 +53,7 @@ public class BigBoyDialogue : MonoBehaviour
                 RightBtnActive();
             }
         }
-        
+
 
         if (controllers[currentPage].finishedAllDialogue)
         {
@@ -67,25 +68,25 @@ public class BigBoyDialogue : MonoBehaviour
                 chapterFinished[currentPage] = false;
             }
 
-             if (controllers[currentPage].finalChapter && !doOnce)
-             {
-                 waitForNextSceneLoadTimer = 0;
-                 fadeInRightBtn = false;
-                 rightBtnAnim.SetTrigger("Disabled");
-                 rightBtn.interactable = false;
-                 doOnce = true;
-             }
-
-           /* if (controllers[currentPage].finalChapter)
+            if (controllers[currentPage].finalChapter && !doOnce)
             {
+                waitForNextSceneLoadTimer = 0;
                 fadeInRightBtn = false;
-                chapterFinished[currentPage] = true;
-                currentPage++;
-                controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
                 rightBtnAnim.SetTrigger("Disabled");
                 rightBtn.interactable = false;
-                chapterFinished[currentPage] = false;
-            }*/
+                doOnce = true;
+            }
+
+            /* if (controllers[currentPage].finalChapter)
+             {
+                 fadeInRightBtn = false;
+                 chapterFinished[currentPage] = true;
+                 currentPage++;
+                 controllers[currentPage].StartCoroutine(controllers[currentPage].TypingLetters());
+                 rightBtnAnim.SetTrigger("Disabled");
+                 rightBtn.interactable = false;
+                 chapterFinished[currentPage] = false;
+             }*/
 
             if (waitForNextSceneLoadTimer >= waitForNextSceneTime && doOnce && !doOnce2)
             {
@@ -111,5 +112,15 @@ public class BigBoyDialogue : MonoBehaviour
     public void PageFlip()
     {
         controllers[currentPage].PageFlip();
+    }
+
+    public void ClearALLChildren()
+    {
+        DragAndDrop[] noTexts = GetComponentsInChildren<DragAndDrop>();
+        for (int i = 0; i < noTexts.Length; i++)
+        {
+            Debug.Log(noTexts[i].name);
+            noTexts[i].fadeOut = true;
+        }
     }
 }

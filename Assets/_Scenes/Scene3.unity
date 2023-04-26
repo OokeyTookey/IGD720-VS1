@@ -939,7 +939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -947,6 +947,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
@@ -966,11 +970,19 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2046368458}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 2046368458}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
@@ -990,11 +1002,19 @@ PrefabInstance:
       value: FadePlayerOut
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: ClearALLChildren
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: UnityEngine.Animator, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: BigBoyDialogue, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
       value: BigBoyDialogue, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
@@ -1007,6 +1027,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399727919822156620, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8588051707942525685, guid: e0f61dfb9fdf8d14fb81700b8f572ee6, type: 3}
