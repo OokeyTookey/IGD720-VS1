@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
+    AudioSource swordSwoosh;
 
     [HideInInspector]public bool playerTakenDamage;
     float invincibilityTimer;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer spriteRenderer;
     private void Start()
     {
+        swordSwoosh = this.GetComponent<AudioSource>();
         rb = this.GetComponent<Rigidbody2D>();
         animator = this.GetComponent<Animator>();
         spriteRenderer = this.GetComponent<SpriteRenderer>();
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour
     public void StartSwordAttack()
     {
         swordAttack.UpdateBoxColliderPosition(currentDirectionFacing / swordColliderOffset);
+        swordSwoosh.Play();
         swordAttack.enableAttack = true;
     }
 

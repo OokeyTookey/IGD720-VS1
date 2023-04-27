@@ -151,6 +151,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             animations.SetTrigger("EnemyDie");
+            animations.SetTrigger("FadeOutSlime");
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0;
             enemyDead = true;

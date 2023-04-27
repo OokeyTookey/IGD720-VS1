@@ -30,6 +30,10 @@ public class DialogueController2 : MonoBehaviour
     public string nextSceneName;
 
     public bool levelCompleted;
+   // public AudioSource soundOne;
+    float minPitch = 1;
+    float maxPitch= 2;
+
 
     private void Start()
     {
@@ -53,6 +57,7 @@ public class DialogueController2 : MonoBehaviour
                 NextSentence();
             }
         }
+
 
         if (pageFlipped && fadeOutTimer > fadeOutMax)
         {
@@ -107,6 +112,8 @@ public class DialogueController2 : MonoBehaviour
         foreach (var letter in chapters[currentPageNumber].sentence) //ToCharArray copies the chars and put them into unicode (readable)
         {
             chapters[currentPageNumber].textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
+           // soundOne.pitch = Random.Range(minPitch, maxPitch);
+           // soundOne.Play();
             yield return new WaitForSeconds(parentController.typingSpeed);
         }
     }
