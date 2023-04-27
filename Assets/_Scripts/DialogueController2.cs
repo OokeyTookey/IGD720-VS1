@@ -112,8 +112,6 @@ public class DialogueController2 : MonoBehaviour
         foreach (var letter in chapters[currentPageNumber].sentence) //ToCharArray copies the chars and put them into unicode (readable)
         {
             chapters[currentPageNumber].textBox.text += letter; //access the TexhMeshPro object then add a letter everytime the coroutine runs.
-           // soundOne.pitch = Random.Range(minPitch, maxPitch);
-           // soundOne.Play();
             yield return new WaitForSeconds(parentController.typingSpeed);
         }
     }

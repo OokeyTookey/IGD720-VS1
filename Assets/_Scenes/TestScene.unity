@@ -660,12 +660,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0
   finishedAllDialogue: 0
   finalChapter: 0
   nextSceneName: 
+  levelCompleted: 0
 --- !u!4 &257541621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1329478867382734163, guid: dfd7f2594b47013418d86f15b21c549e, type: 3}
@@ -2551,12 +2553,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0
   finishedAllDialogue: 0
   finalChapter: 0
   nextSceneName: 
+  levelCompleted: 0
 --- !u!1 &948512565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4892,6 +4896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters:
   - {fileID: 591949004}
   - {fileID: 623644872}
@@ -4901,6 +4906,7 @@ MonoBehaviour:
   finishedAllDialogue: 0
   finalChapter: 0
   nextSceneName: 
+  levelCompleted: 0
 --- !u!1 &1488035761
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,6 +6591,7 @@ MonoBehaviour:
   controllers: []
   chapterFinished: 
   typingSpeed: 0.06
+  playerAnim: {fileID: 0}
 --- !u!1 &2083929381
 GameObject:
   m_ObjectHideFlags: 0
@@ -6638,12 +6645,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPageNumber: 0
+  finishedSentence: 0
   chapters: []
   finishedPage: 0
   doOnce: 0
   finishedAllDialogue: 0
   finalChapter: 1
   nextSceneName: 
+  levelCompleted: 0
 --- !u!1001 &7030895010258275148
 PrefabInstance:
   m_ObjectHideFlags: 0
